@@ -12,11 +12,23 @@ public class Pokemon
     public string name;
     public PokemonType type;
     public int level;
+    public int experience;
     /// <summary>
     /// 0 -> forward facing
     /// 1 -> back facing
     /// </summary>
     public Sprite[] sprites = new Sprite[2];
+    public PokeStats stats = new PokeStats();
+}
+
+[Serializable]
+public struct PokeStats
+{
+    public int HP;
+    public int Attack;
+    public int Defence;
+    public int Speed;
+    public int Special;
 }
 
 namespace Enums

@@ -28,6 +28,8 @@ public class Pokemon
 
         currStats.weight = UnityEngine.Random.Range(baseStats.weight * 0.75f, baseStats.weight * 1.25f);
         currStats.height = UnityEngine.Random.Range(baseStats.height * 0.75f, baseStats.height * 1.25f);
+
+        currStats.level = baseStats.level;
     }
 
     public PokeStats _CurrStats => currStats;

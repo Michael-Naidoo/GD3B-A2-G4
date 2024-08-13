@@ -15,37 +15,31 @@ MonoBehaviour:
   pokemon_evolutions:
   - id: 1
     name: Bulbasaur
-    type: 16
-    level: 1
-    experience: 0
     sprites: []
-    stats:
-      HP: 0
-      Attack: 0
-      Defence: 0
-      Speed: 0
-      Special: 0
+    baseStats:
+      type: 144
+      HP: 89
+      CP: 1136
+      weight: 6.9
+      height: 0.7
+      level: 1
   - id: 2
     name: Ivysaur
-    type: 0
-    level: 0
-    experience: 0
     sprites: []
-    stats:
-      HP: 0
-      Attack: 0
-      Defence: 0
-      Speed: 0
-      Special: 0
+    baseStats:
+      type: 144
+      HP: 115
+      CP: 1797
+      weight: 13
+      height: 1
+      level: 16
   - id: 3
     name: Venusaur
-    type: 0
-    level: 0
-    experience: 0
     sprites: []
-    stats:
-      HP: 0
-      Attack: 0
-      Defence: 0
-      Speed: 0
-      Special: 0
+    baseStats:
+      type: 144
+      HP: 149
+      CP: 2973
+      weight: 100
+      height: 2
+      level: 32

@@ -201,14 +201,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f957167d64575b46835d3e1c577338a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: fff8a9d38b9dc864191cedc96869a38f, type: 2}
   pokemon:
     id: 0
     name: 
-    type: 0
-    level: 0
     sprites:
     - {fileID: 0}
     - {fileID: 0}
+    baseStats:
+      type: 0
+      HP: 10
+      CP: 0
+      weight: 0
+      height: 0
 --- !u!136 &278461628
 CapsuleCollider:
   m_ObjectHideFlags: 0

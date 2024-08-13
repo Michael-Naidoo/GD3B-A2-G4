@@ -15,37 +15,31 @@ MonoBehaviour:
   pokemon_evolutions:
   - id: 7
     name: Squirtle
-    type: 4
-    level: 1
-    experience: 0
     sprites: []
-    stats:
-      HP: 0
-      Attack: 0
-      Defence: 0
-      Speed: 0
-      Special: 0
+    baseStats:
+      type: 4
+      HP: 88
+      CP: 936
+      weight: 9
+      height: 0.5
+      level: 1
   - id: 8
     name: Wartortle
-    type: 4
-    level: 0
-    experience: 0
     sprites: []
-    stats:
-      HP: 0
-      Attack: 0
-      Defence: 0
-      Speed: 0
-      Special: 0
+    baseStats:
+      type: 4
+      HP: 113
+      CP: 1533
+      weight: 22.5
+      height: 1
+      level: 16
   - id: 9
     name: Blastoise
-    type: 4
-    level: 0
-    experience: 0
     sprites: []
-    stats:
-      HP: 0
-      Attack: 0
-      Defence: 0
-      Speed: 0
-      Special: 0
+    baseStats:
+      type: 4
+      HP: 147
+      CP: 2653
+      weight: 85.5
+      height: 1.6
+      level: 36

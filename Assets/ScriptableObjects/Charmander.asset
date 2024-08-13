@@ -15,37 +15,31 @@ MonoBehaviour:
   pokemon_evolutions:
   - id: 4
     name: Charmander
-    type: 2
-    level: 1
-    experience: 0
     sprites: []
-    stats:
-      HP: 0
-      Attack: 0
-      Defence: 0
-      Speed: 0
-      Special: 0
+    baseStats:
+      type: 2
+      HP: 79
+      CP: 936
+      weight: 9
+      height: 0.5
+      level: 1
   - id: 5
     name: Charmeleon
-    type: 2
-    level: 0
-    experience: 0
     sprites: []
-    stats:
-      HP: 0
-      Attack: 0
-      Defence: 0
-      Speed: 0
-      Special: 0
+    baseStats:
+      type: 2
+      HP: 111
+      CP: 1718
+      weight: 19
+      height: 1.1
+      level: 16
   - id: 6
     name: Charizard
-    type: 514
-    level: 0
-    experience: 0
     sprites: []
-    stats:
-      HP: 0
-      Attack: 0
-      Defence: 0
-      Speed: 0
-      Special: 0
+    baseStats:
+      type: 514
+      HP: 145
+      CP: 2653
+      weight: 85.5
+      height: 1.6
+      level: 36

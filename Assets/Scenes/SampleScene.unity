@@ -246,8 +246,8 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -357,6 +357,7 @@ MonoBehaviour:
     weight: 0
     height: 0
     level: 0
+  dataPanel: {fileID: 1889844263}
 --- !u!136 &278461628
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2404,6 +2405,7 @@ GameObject:
   - component: {fileID: 1889844264}
   - component: {fileID: 1889844266}
   - component: {fileID: 1889844265}
+  - component: {fileID: 1889844267}
   m_Layer: 0
   m_Name: PokeStatPanel
   m_TagString: Untagged
@@ -2475,6 +2477,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1889844263}
   m_CullTransparentMesh: 1
+--- !u!114 &1889844267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1889844263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36ed21f036bcdb543a712d081d60c7ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CPValue: {fileID: 1942144871}
+  CPScale: {fileID: 888891807}
+  pokemonSprite: {fileID: 761351565}
+  pokemonName: {fileID: 2037287719}
+  HPScale: {fileID: 1403251626}
+  weight: {fileID: 1664165012}
+  types: {fileID: 1323870570}
+  height: {fileID: 824959138}
 --- !u!1 &1908911832
 GameObject:
   m_ObjectHideFlags: 0

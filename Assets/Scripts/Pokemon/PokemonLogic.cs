@@ -8,6 +8,7 @@ public class PokemonLogic : MonoBehaviour
     public Pokemon pokemon;
     public PokeStats currStats;
 
+    public GameObject dataPanel;    //testing
 
     private void Start()
     {
@@ -24,5 +25,7 @@ public class PokemonLogic : MonoBehaviour
         currStats.CP = pokemon._CurrStats.CP;
         currStats.weight = pokemon._CurrStats.weight;
         currStats.height = pokemon._CurrStats.height;
+
+        dataPanel.GetComponent<PokemonStatUI>().SetData(pokemon, currStats, data.pokemon_evolutions[0]);
     }
 }

@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54e251ee4ec774c4991d8d3be2235d5f, type: 3}
+  m_Name: Squirtle
+  m_EditorClassIdentifier: 
+  pokemon_evolutions:
+  - id: 7
+    name: Squirtle
+    sprites: []
+    baseStats:
+      type: 4
+      HP: 88
+      CP: 936
+      weight: 9
+      height: 0.5
+      level: 1
+  - id: 8
+    name: Wartortle
+    sprites: []
+    baseStats:
+      type: 4
+      HP: 113
+      CP: 1533
+      weight: 22.5
+      height: 1
+      level: 16
+  - id: 9
+    name: Blastoise
+    sprites: []
+    baseStats:
+      type: 4
+      HP: 147
+      CP: 2653
+      weight: 85.5
+      height: 1.6
+      level: 36

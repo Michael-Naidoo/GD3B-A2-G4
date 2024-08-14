@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54e251ee4ec774c4991d8d3be2235d5f, type: 3}
+  m_Name: Charmander
+  m_EditorClassIdentifier: 
+  pokemon_evolutions:
+  - id: 4
+    name: Charmander
+    sprites: []
+    baseStats:
+      type: 2
+      HP: 79
+      CP: 936
+      weight: 9
+      height: 0.5
+      level: 1
+  - id: 5
+    name: Charmeleon
+    sprites: []
+    baseStats:
+      type: 2
+      HP: 111
+      CP: 1718
+      weight: 19
+      height: 1.1
+      level: 16
+  - id: 6
+    name: Charizard
+    sprites: []
+    baseStats:
+      type: 514
+      HP: 145
+      CP: 2653
+      weight: 85.5
+      height: 1.6
+      level: 36

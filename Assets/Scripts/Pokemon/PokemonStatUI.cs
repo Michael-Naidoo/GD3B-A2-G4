@@ -16,24 +16,24 @@ public class PokemonStatUI : MonoBehaviour
     public TextMeshProUGUI height;
 
 
-    public void SetData(Pokemon currPokemon)
+    public void SetData(Pokemon currPokemon, PokeStats currStats, Pokemon basePokemon)
     {
-        CPValue.text = $"CP {currPokemon.currStats.CP}";
+        CPValue.text = $"CP {currStats.CP}";
 
-        CPScale.maxValue = currPokemon.base_pokedata.max_CP;
-        CPScale.value = currPokemon.currStats.CP;
+        CPScale.maxValue = basePokemon.baseStats.CP;
+        CPScale.value = currStats.CP;
 
         //pokemonSprite.sprite = currPokemon.sprites[0];
 
-        pokemonName.text = currPokemon.base_pokedata.name;
+        pokemonName.text = currPokemon.name;
 
-        HPScale.maxValue = currPokemon.currStats.HP;
-        HPScale.value = currPokemon.currStats.HP;
+        HPScale.maxValue = currStats.HP;
+        HPScale.value = currStats.HP;
 
-        weight.text = currPokemon.currStats.weight.ToString("0.00") + "kg";
+        weight.text = currStats.weight.ToString("0.00") + "kg";
 
-        types.text = currPokemon.currStats.type.ToString();
+        types.text = currStats.type.ToString();
 
-        height.text = currPokemon.currStats.height.ToString("0.00") + "m";
+        height.text = currStats.height.ToString("0.00") + "m";
     }
 }

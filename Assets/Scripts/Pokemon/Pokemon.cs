@@ -8,31 +8,20 @@ using Enums;
 [Serializable]
 public class Pokemon
 {
-    public int id;
-    public string name;
-
-
-    /// <summary>
-    /// 0 -> forward facing
-    /// 1 -> back facing
-    /// </summary>
-    public Sprite[] sprites = new Sprite[2];
-    public PokeStats baseStats = new PokeStats();
-    private PokeStats currStats = new PokeStats();
+    public _PokeData base_pokedata;
+    public PokeStats currStats = new PokeStats();
 
     public void CalcCurrStats()
     {
-        currStats.type = baseStats.type;
-        currStats.HP = UnityEngine.Random.Range(0, baseStats.HP + 1);
-        currStats.CP = UnityEngine.Random.Range(0, baseStats.CP + 1);
+        currStats.type = base_pokedata.type;
+        currStats.HP = UnityEngine.Random.Range(0, base_pokedata.max_HP + 1);
+        currStats.CP = UnityEngine.Random.Range(0, base_pokedata.max_CP + 1);
 
-        currStats.weight = UnityEngine.Random.Range(baseStats.weight * 0.75f, baseStats.weight * 1.25f);
-        currStats.height = UnityEngine.Random.Range(baseStats.height * 0.75f, baseStats.height * 1.25f);
+        currStats.weight = UnityEngine.Random.Range(base_pokedata.ave_weight * 0.75f, base_pokedata.ave_weight * 1.25f);
+        currStats.height = UnityEngine.Random.Range(base_pokedata.ave_height * 0.75f, base_pokedata.ave_height * 1.25f);
 
-        currStats.level = baseStats.level;
+        currStats.level = UnityEngine.Random.Range(base_pokedata.level.x, base_pokedata.level.y);
     }
-
-    public PokeStats _CurrStats => currStats;
 }
 
 [Serializable]

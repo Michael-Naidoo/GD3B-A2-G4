@@ -5,4 +5,13 @@ using UnityEngine;
 public class PokemonLogic : MonoBehaviour
 {
     public Pokemon pokemon;
+
+    public GameObject dataPanel;    //testing
+
+    private void Start()
+    {
+        pokemon.CalcCurrStats();
+
+        dataPanel.GetComponent<PokemonStatUI>().SetData(pokemon);
+    }
 }

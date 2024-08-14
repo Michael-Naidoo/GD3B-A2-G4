@@ -8,27 +8,34 @@ using Enums;
 [Serializable]
 public class Pokemon
 {
-    public int id;
-    public string name;
-    public PokemonType type;
-    public int level;
-    public int experience;
-    /// <summary>
-    /// 0 -> forward facing
-    /// 1 -> back facing
-    /// </summary>
-    public Sprite[] sprites = new Sprite[2];
-    public PokeStats stats = new PokeStats();
+    public _PokeData base_pokedata;
+    public PokeStats currStats = new PokeStats();
+
+    public void CalcCurrStats()
+    {
+        currStats.type = base_pokedata.type;
+        currStats.HP = UnityEngine.Random.Range(0, base_pokedata.max_HP + 1);
+        currStats.CP = UnityEngine.Random.Range(0, base_pokedata.max_CP + 1);
+
+        currStats.weight = UnityEngine.Random.Range(base_pokedata.ave_weight * 0.75f, base_pokedata.ave_weight * 1.25f);
+        currStats.height = UnityEngine.Random.Range(base_pokedata.ave_height * 0.75f, base_pokedata.ave_height * 1.25f);
+
+        currStats.level = UnityEngine.Random.Range(base_pokedata.level.x, base_pokedata.level.y);
+    }
 }
 
 [Serializable]
 public struct PokeStats
 {
+    public PokemonType type;
+
     public int HP;
-    public int Attack;
-    public int Defence;
-    public int Speed;
-    public int Special;
+    public int CP;
+
+    public float weight;
+    public float height;
+
+    public float level;
 }
 
 namespace Enums

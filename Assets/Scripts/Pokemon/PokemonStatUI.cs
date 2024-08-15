@@ -22,6 +22,7 @@ public class PokemonStatUI : MonoBehaviour
     /// This sets all the data on the UI
     /// </summary>
     /// <param name="currPokemon">The Pokemon to display on the stats</param>
+    /// 
     public void DisplayData(Pokemon currPokemon)
     {
         CPValue.text = $"CP {currPokemon.currStats.CP}";
@@ -29,7 +30,7 @@ public class PokemonStatUI : MonoBehaviour
         CPScale.maxValue = currPokemon.base_pokedata.max_CP;
         CPScale.value = currPokemon.currStats.CP;
 
-        //pokemonSprite.sprite = currPokemon.sprites[0];
+        pokemonSprite.sprite = currPokemon.base_pokedata.sprite;
 
         pokemonName.text = currPokemon.base_pokedata.name;
 

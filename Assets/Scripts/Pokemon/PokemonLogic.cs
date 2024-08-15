@@ -17,7 +17,7 @@ public class PokemonLogic : MonoBehaviour
         pokemon.base_pokedata = allPokemon[Random.Range(0,allPokemon.Length)];
         pokemon.CalcCurrStats();
 
-        dataPanel.GetComponent<PokemonStatUI>().DisplayData(pokemon);
+        //dataPanel.GetComponent<PokemonStatUI>().DisplayData(pokemon);
         GUI.sprite = pokemon.base_pokedata.sprite;
     }
 

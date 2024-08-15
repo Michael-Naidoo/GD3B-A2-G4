@@ -12,6 +12,6 @@ public class PokemonLogic : MonoBehaviour
     {
         pokemon.CalcCurrStats();
 
-        dataPanel.GetComponent<PokemonStatUI>().SetData(pokemon);
+        dataPanel.GetComponent<PokemonStatUI>().DisplayData(pokemon);
     }
 }

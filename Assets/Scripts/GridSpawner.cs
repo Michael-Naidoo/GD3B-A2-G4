@@ -17,11 +17,6 @@ public class GridSpawner : MonoBehaviour
     private List<Vector3> spawnPoints = new List<Vector3>();
     public Transform[] points;
 
-    private void Start()
-    {
-        GenerateGrid();
-    }
-
     #region Matrix
 
     /// <summary>

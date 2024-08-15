@@ -123,75 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &43322234
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1908911833}
-    m_Modifications:
-    - target: {fileID: 1762585815814433647, guid: 452c1805b245c33468e581484cd6e945, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1762585815814433647, guid: 452c1805b245c33468e581484cd6e945, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1762585815814433647, guid: 452c1805b245c33468e581484cd6e945, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.02
-      objectReference: {fileID: 0}
-    - target: {fileID: 1762585815814433647, guid: 452c1805b245c33468e581484cd6e945, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 4.09
-      objectReference: {fileID: 0}
-    - target: {fileID: 1762585815814433647, guid: 452c1805b245c33468e581484cd6e945, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1762585815814433647, guid: 452c1805b245c33468e581484cd6e945, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1762585815814433647, guid: 452c1805b245c33468e581484cd6e945, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1762585815814433647, guid: 452c1805b245c33468e581484cd6e945, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1762585815814433647, guid: 452c1805b245c33468e581484cd6e945, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1762585815814433647, guid: 452c1805b245c33468e581484cd6e945, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1762585815814433647, guid: 452c1805b245c33468e581484cd6e945, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2471536942003723757, guid: 452c1805b245c33468e581484cd6e945, type: 3}
-      propertyPath: m_Name
-      value: Pokemon (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 2471536942003723757, guid: 452c1805b245c33468e581484cd6e945, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6384054538859631707, guid: 452c1805b245c33468e581484cd6e945, type: 3}
-      propertyPath: dataPanel
-      value: 
-      objectReference: {fileID: 1271196237}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 452c1805b245c33468e581484cd6e945, type: 3}
 --- !u!1 &420591450
 GameObject:
   m_ObjectHideFlags: 0
@@ -839,11 +770,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1271196237 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1102555823611827807, guid: 3067cee756ac8d147a2bbd2b286f9dd1, type: 3}
-  m_PrefabInstance: {fileID: 2097241276}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1271196238 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4754206332020546510, guid: 3067cee756ac8d147a2bbd2b286f9dd1, type: 3}
@@ -912,11 +838,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &1633327065 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1762585815814433647, guid: 452c1805b245c33468e581484cd6e945, type: 3}
-  m_PrefabInstance: {fileID: 43322234}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1692884658
 GameObject:
   m_ObjectHideFlags: 0
@@ -1009,7 +930,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1633327065}
   - {fileID: 1074856970}
   - {fileID: 519278164}
   m_Father: {fileID: 0}
@@ -1327,9 +1247,29 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2471536942003723757, guid: 452c1805b245c33468e581484cd6e945, type: 3}
     - target: {fileID: 1253596591312146188, guid: df05169027078e14ca32c0c75a515ff0, type: 3}
+      propertyPath: maxObstacles
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1253596591312146188, guid: df05169027078e14ca32c0c75a515ff0, type: 3}
       propertyPath: pokemonParent
       value: 
       objectReference: {fileID: 1908911833}
+    - target: {fileID: 1253596591312146188, guid: df05169027078e14ca32c0c75a515ff0, type: 3}
+      propertyPath: p_obstacles.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1253596591312146188, guid: df05169027078e14ca32c0c75a515ff0, type: 3}
+      propertyPath: p_obstacles.Array.data[0]
+      value: 
+      objectReference: {fileID: 8612098895159967407, guid: 1351c47ce20a4b642911d8414ad8e279, type: 3}
+    - target: {fileID: 1253596591312146188, guid: df05169027078e14ca32c0c75a515ff0, type: 3}
+      propertyPath: p_obstacles.Array.data[1]
+      value: 
+      objectReference: {fileID: 1271098895851998797, guid: 102d6e2df0bdb804c8db513f5f409876, type: 3}
+    - target: {fileID: 1253596591312146188, guid: df05169027078e14ca32c0c75a515ff0, type: 3}
+      propertyPath: p_obstacles.Array.data[2]
+      value: 
+      objectReference: {fileID: 5060513224904397919, guid: 666559d508b564b41a83541d5cd2d2fc, type: 3}
     - target: {fileID: 7062481090156686542, guid: df05169027078e14ca32c0c75a515ff0, type: 3}
       propertyPath: m_RootOrder
       value: -1

@@ -9,70 +9,54 @@ public class GridSpawner : MonoBehaviour
     [SerializeField] private GameObject p_point;    //point prefab
 
     [Tooltip("The x and y sizing of the grid")]
-    [SerializeField] private Vector2 matrixMetrics;
+    [SerializeField] private Vector2 gridSize;
 
     [Tooltip("The distance between each point (size of each grid block)")]
-    [SerializeField] private Vector2 matrixDistance = new Vector2(1, 1);
+    [SerializeField] private Vector2 gridDistance = new Vector2(1, 1);
 
     private List<Vector3> spawnPoints = new List<Vector3>();
     public Transform[] points;
 
-    [Header("Pokemon")]
-    public GameObject p_pokemon;
-    public Transform pokemonParent;
-
-    //public void Init_Herd()
-    //{
-    //    if (destroyAfterUse) Gen_SpawnMatrix();
-    //    SpawnSheepHerd();
-    //    if (destroyAfterUse) DestroyMatrix();
-    //}
-
-    //public void Init_Sheep(int num)
-    //{
-    //    BoidsManager.Instance.AddToBoids();
-    //    if (destroyAfterUse) Gen_SpawnMatrix();
-    //    AddSheep(num);
-    //    if (destroyAfterUse) DestroyMatrix();
-    //}
-
     private void Start()
     {
-        Gen_SpawnMatrix();
+        GenerateGrid();
     }
 
     #region Matrix
 
-    public void Gen_SpawnMatrix()
+    /// <summary>
+    /// generates the grid
+    /// </summary>
+    public void GenerateGrid()
     {
         spawnPoints.Clear();
-        CreateMatrix();
-        CenterMatix();
+        CreateGrid();
+        CenterGrid();
         Init_Spawners();
     }
 
     /// <summary>
     /// Create a matrix of positions and add it to the spawnPoints list
     /// </summary>
-    private void CreateMatrix()
+    private void CreateGrid()
     {
         Vector3 pos = Vector3.zero;
-        for (int x = 0; x < matrixMetrics.x; x++)
+        for (int x = 0; x < gridSize.x; x++)
         {
-            for (int y = 0; y < matrixMetrics.y; y++)
+            for (int y = 0; y < gridSize.y; y++)
             {
                 spawnPoints.Add(pos);
-                pos.z += matrixDistance.y;
+                pos.z += gridDistance.y;
             }
             pos.z = 0;
-            pos.x += matrixDistance.x;
+            pos.x += gridDistance.x;
         }
     }
 
     /// <summary>
     /// Centers the matrix around the gameobjects center (0, 0, 0)
     /// </summary>
-    private void CenterMatix()
+    private void CenterGrid()
     {
         float halfX = spawnPoints[spawnPoints.Count - 1].x / 2;
         float halfZ = spawnPoints[spawnPoints.Count - 1].z / 2;
@@ -115,7 +99,7 @@ public class GridSpawner : MonoBehaviour
     {
         foreach (Transform t in points)
         {
-            Gizmos.DrawWireCube(t.position, new Vector3(matrixDistance.x*0.9f, 0, matrixDistance.y*0.9f));
+            Gizmos.DrawWireCube(t.position, new Vector3(gridDistance.x*0.9f, 0, gridDistance.y*0.9f));
         }
 
     }

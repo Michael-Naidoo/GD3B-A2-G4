@@ -40,6 +40,8 @@ public struct PokeStats
     public float height;
 
     public float level;
+
+    public string dateCaught;
 }
 
 namespace Enums

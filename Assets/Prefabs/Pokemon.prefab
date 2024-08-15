@@ -34,7 +34,7 @@ Transform:
   m_Children:
   - {fileID: 8021649352850060679}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1496613170153087458
 MeshFilter:
@@ -130,6 +130,8 @@ MonoBehaviour:
       weight: 0
       height: 0
       level: 0
+      dateCaught: 
+  GUI: {fileID: 6724164933101594142}
   dataPanel: {fileID: 0}
 --- !u!1 &3746629101858253085
 GameObject:

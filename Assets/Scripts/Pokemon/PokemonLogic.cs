@@ -1,25 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class PokemonLogic : MonoBehaviour
 {
     public Pokemon pokemon;
-    [SerializeField] private _PokeData[] allPokemon;
+    public SpriteRenderer GUI;
 
     public GameObject dataPanel;    //testing
 
     private void Start()
     {
-        allPokemon = Resources.LoadAll<_PokeData>("Pokemon");
+        _PokeData[] allPokemon = Resources.LoadAll<_PokeData>("Pokemon");
+
+        pokemon.base_pokedata = allPokemon[Random.Range(0,allPokemon.Length)];
         pokemon.CalcCurrStats();
 
         dataPanel.GetComponent<PokemonStatUI>().DisplayData(pokemon);
-        Debug.Log(allPokemon.Length);
-        foreach (_PokeData d in allPokemon)
-        {
-            Debug.Log(d.name);
-        }
+        GUI.sprite = pokemon.base_pokedata.sprite;
     }
 
     public void RandomisePokemon()

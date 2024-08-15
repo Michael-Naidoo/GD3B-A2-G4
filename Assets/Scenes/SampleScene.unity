@@ -2692,7 +2692,7 @@ MonoBehaviour:
       height: 0
       level: 0
       dateCaught: 
-  allPokemon: []
+  GUI: {fileID: 132416961}
   dataPanel: {fileID: 1889844263}
 --- !u!136 &1926344244
 CapsuleCollider:

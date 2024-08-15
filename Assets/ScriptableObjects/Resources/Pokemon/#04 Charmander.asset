@@ -15,7 +15,7 @@ MonoBehaviour:
   id: 4
   pokeName: Charmander
   type: 2
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: e392dfe862b24f14986e2fe1347912c6, type: 3}
   max_HP: 79
   max_CP: 936
   ave_weight: 9

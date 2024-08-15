@@ -15,7 +15,7 @@ MonoBehaviour:
   id: 1
   pokeName: Bulbasaur
   type: 144
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 594ee5ec664f19b40acd13c2780400df, type: 3}
   max_HP: 89
   max_CP: 1136
   ave_weight: 6.9

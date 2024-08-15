@@ -14,4 +14,11 @@ public class SpawnPokemon : MonoBehaviour
 
         gridSpawner.GenerateGrid();
     }
+
+    private void PokemonSpawn()
+    {
+        int randNum = Random.Range(0, gridSpawner.points.Length);
+
+        
+    }
 }

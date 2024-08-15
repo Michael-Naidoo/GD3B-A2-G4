@@ -1248,7 +1248,7 @@ PrefabInstance:
       objectReference: {fileID: 2471536942003723757, guid: 452c1805b245c33468e581484cd6e945, type: 3}
     - target: {fileID: 1253596591312146188, guid: df05169027078e14ca32c0c75a515ff0, type: 3}
       propertyPath: maxObstacles
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1253596591312146188, guid: df05169027078e14ca32c0c75a515ff0, type: 3}
       propertyPath: pokemonParent

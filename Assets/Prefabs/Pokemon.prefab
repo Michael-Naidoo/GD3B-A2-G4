@@ -109,6 +109,11 @@ MonoBehaviour:
       height: 0
       level: 0
       dateCaught: 
+    heightScale: 0
+    heightScales:
+    - 3
+    - 2
+    - 1.5
   GUI: {fileID: 6724164933101594142}
   dataPanel: {fileID: 0}
 --- !u!114 &4351008335563994602
@@ -129,7 +134,6 @@ MonoBehaviour:
   parentCollider: {fileID: 8230673190659848752}
   maxTrigger_enter: 0
   critTrigger_enter: 0
-  heightScale: 1
   currShrinkTime: 0
   shrinkTime: 3
 --- !u!1 &3746629101858253085

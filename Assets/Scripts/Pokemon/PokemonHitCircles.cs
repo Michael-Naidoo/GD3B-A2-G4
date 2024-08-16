@@ -14,14 +14,16 @@ public class PokemonHitCircles : MonoBehaviour
     public bool maxTrigger_enter;
     public bool critTrigger_enter;
 
-    public float heightScale = 1;
-
     [SerializeField] private float currShrinkTime;
     public float shrinkTime;
 
     private void Awake()
     {
         pokemonLogic = GetComponent<PokemonLogic>();
+    }
+    private void Start()
+    {
+        maxCircle.transform.localScale = Vector3.one * pokemonLogic.pokemon.currStats.height * pokemonLogic.pokemon.heightScale;
     }
 
     private void Update()

@@ -11,6 +11,8 @@ public class Pokemon
 
     public _PokeData base_pokedata;                 //this is the base stats of the specific pokemon "species"
     public PokeStats currStats = new PokeStats();   //a struct of THIS pokemons stats
+    public float heightScale;
+    [SerializeField] private float[] heightScales;
 
     /// <summary>
     /// Calculates the stats of the current pokemon based off the base stats
@@ -25,6 +27,8 @@ public class Pokemon
         currStats.height = UnityEngine.Random.Range(base_pokedata.ave_height * 0.75f, base_pokedata.ave_height * 1.25f);
 
         currStats.level = UnityEngine.Random.Range(base_pokedata.level.x, base_pokedata.level.y);
+
+        heightScale = heightScales[base_pokedata.evolutionStage];
     }
 }
 

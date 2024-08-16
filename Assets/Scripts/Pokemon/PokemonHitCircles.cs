@@ -6,11 +6,11 @@ using UnityEngine;
 public class PokemonHitCircles : MonoBehaviour
 {
     private PokemonLogic pokemonLogic;
-    public GameObject circlesParent;
-    public GameObject maxCircle;
+    [SerializeField] private GameObject circlesParent;
+    [SerializeField] private GameObject maxCircle;
     public GameObject critCircle;
 
-    public BoxCollider parentCollider;
+    [SerializeField] private BoxCollider parentCollider;
     public bool maxTrigger_enter;
     public bool critTrigger_enter;
 
@@ -23,7 +23,7 @@ public class PokemonHitCircles : MonoBehaviour
     }
     private void Start()
     {
-        maxCircle.transform.localScale = Vector3.one * pokemonLogic.pokemon.currStats.height * pokemonLogic.pokemon.heightScale;
+        PrepareHitCircles();
     }
 
     private void Update()
@@ -40,10 +40,12 @@ public class PokemonHitCircles : MonoBehaviour
             currShrinkTime -= Time.deltaTime;
             critCircle.transform.localScale = maxCircle.transform.localScale * (currShrinkTime/ shrinkTime);
         }
-
-
     }
 
+    public void PrepareHitCircles()
+    {
+        maxCircle.transform.localScale = Vector3.one * pokemonLogic.pokemon.currStats.height * pokemonLogic.pokemon.heightScale;
+    }
 
 
 }

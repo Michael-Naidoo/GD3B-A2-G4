@@ -48,6 +48,22 @@ public struct PokeStats
     public string dateCaught;
 }
 
+//  divide by 10!!!!!!!!!!
+public enum PokeBallTypes
+{
+    Pokeball = 10,
+    Greatball = 15,
+    UltraBall = 20
+}
+
+//  divide by 10!!!!!!!!!!
+public enum BerryTypes
+{
+    RazzBerry = 15,
+    PinapBerry = 18,
+    NanabBerry = 20
+}
+
 namespace Enums
 {
      /*  Bit-Shifting Explination

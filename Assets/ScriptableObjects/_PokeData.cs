@@ -14,7 +14,7 @@ public class _PokeData : ScriptableObject
     public int max_CP;
     public float ave_weight;
     public float ave_height;
-    public Vector2 level;
+    public Vector2Int level;
     [Space(10)]
     public int evolutionStage;
     public _PokeData[] evolutions;

@@ -24,11 +24,22 @@ public class PokemonLogic : MonoBehaviour
 
     public void CatchPokemon()
     {
-
+        
     }
 
-    //private float CatchProbability()
+    private float CatchProbability()
+    {
+        float failChance_preMultipliers = 1-(pokemon.base_pokedata.baseCaptureRate / (2 * CPMultLevels.CPMult[(int)pokemon.currStats.level - 1]));
+
+        float multipliers = 0;  // work this out in a function
+
+        float failChance = Mathf.Pow(failChance_preMultipliers, multipliers);
+        float probability = 1 - failChance;
+        return probability;
+    }
+
+    //private float Multiplier()
     //{
-    //    float probability = 1 - (1 - );
+
     //}
 }

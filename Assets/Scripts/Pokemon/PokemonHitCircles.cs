@@ -45,6 +45,8 @@ public class PokemonHitCircles : MonoBehaviour
     public void PrepareHitCircles()
     {
         maxCircle.transform.localScale = Vector3.one * pokemonLogic.pokemon.currStats.height * pokemonLogic.pokemon.heightScale;
+
+        //determine pokemon catch difficulty - MATCH COLOUR TO DIFFICULTY
     }
 
 

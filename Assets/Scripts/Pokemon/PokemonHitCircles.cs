@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(PokemonLogic))]
-public class HitCircle : MonoBehaviour
+public class PokemonHitCircles : MonoBehaviour
 {
     private PokemonLogic pokemonLogic;
     public GameObject circlesParent;
@@ -16,7 +16,8 @@ public class HitCircle : MonoBehaviour
 
     public float heightScale = 1;
 
-    public float shrinkSpeed;
+    [SerializeField] private float currShrinkTime;
+    public float shrinkTime;
 
     private void Awake()
     {
@@ -26,6 +27,18 @@ public class HitCircle : MonoBehaviour
     private void Update()
     {
         parentCollider.enabled = maxTrigger_enter;
+
+        if (currShrinkTime <= 0)
+        {
+            currShrinkTime = shrinkTime;
+            critCircle.transform.localScale = maxCircle.transform.localScale;
+        }
+        else
+        {
+            currShrinkTime -= Time.deltaTime;
+            critCircle.transform.localScale = maxCircle.transform.localScale * (currShrinkTime/ shrinkTime);
+        }
+
 
     }
 

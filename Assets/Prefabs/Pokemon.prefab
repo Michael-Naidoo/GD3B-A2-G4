@@ -130,7 +130,8 @@ MonoBehaviour:
   maxTrigger_enter: 0
   critTrigger_enter: 0
   heightScale: 1
-  shrinkSpeed: 0
+  currShrinkTime: 0
+  shrinkTime: 3
 --- !u!1 &3746629101858253085
 GameObject:
   m_ObjectHideFlags: 0

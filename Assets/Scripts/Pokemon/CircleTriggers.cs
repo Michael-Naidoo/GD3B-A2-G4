@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CircleTriggers : MonoBehaviour
 {
-    public HitCircle hitCircle;
+    public PokemonHitCircles hitCircle;
     [SerializeField] private bool isMaxCollider;
 
     private void OnTriggerStay(Collider other)

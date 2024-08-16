@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ParentCircle : MonoBehaviour
 {
-    public HitCircle hitCircle;
+    public PokemonHitCircles hitCircle;
     private void OnCollisionEnter(Collision collision)
     {
         if (hitCircle.critTrigger_enter)

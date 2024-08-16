@@ -26,3 +26,5 @@ MonoBehaviour:
   - {fileID: 11400000}
   - {fileID: 11400000, guid: 44da0ce5c92e95940bffd5ff67b30a1a, type: 2}
   - {fileID: 11400000, guid: 11ec6e0d4760b6c4f9d5499233582e52, type: 2}
+  baseCaptureRate: 0.2
+  baseFleeRate: 0.1

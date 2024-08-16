@@ -8,6 +8,7 @@ public class PokemonLogic : MonoBehaviour
     public Pokemon pokemon;
     public SpriteRenderer GUI;
 
+    public _CPMultLevels CPMultLevels;
     public GameObject dataPanel;    //testing
 
     private void Start()
@@ -21,5 +22,13 @@ public class PokemonLogic : MonoBehaviour
         GUI.sprite = pokemon.base_pokedata.sprite;
     }
 
+    public void CatchPokemon()
+    {
 
+    }
+
+    //private float CatchProbability()
+    //{
+    //    float probability = 1 - (1 - );
+    //}
 }

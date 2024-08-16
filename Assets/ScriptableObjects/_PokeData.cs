@@ -18,4 +18,7 @@ public class _PokeData : ScriptableObject
     [Space(10)]
     public int evolutionStage;
     public _PokeData[] evolutions;
+    [Space(10)]
+    public float baseCaptureRate;
+    public float baseFleeRate;
 }

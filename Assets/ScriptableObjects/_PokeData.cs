@@ -2,13 +2,13 @@ using Enums;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Animations;
 using UnityEngine;
 
 [CreateAssetMenu]
 [Serializable]
 public class _PokeData : ScriptableObject
 {
-
     public int id;
     public string pokeName;
     public PokemonType type;

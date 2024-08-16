@@ -21,8 +21,5 @@ public class PokemonLogic : MonoBehaviour
         GUI.sprite = pokemon.base_pokedata.sprite;
     }
 
-    public void RandomisePokemon()
-    {
 
-    }
 }

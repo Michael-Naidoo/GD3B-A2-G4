@@ -414,9 +414,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e03942bf6e1c10b4a94af15ef63ca9a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forceMultiplier: 0
-  forwardForce: 0
-  holdTimer: 0
+  pointA: {x: 0, y: 0}
+  pointB: {x: 0, y: 0}
+  pointC: {x: 0, y: 0}
+  curveMultiplier: 1
+  forceMultiplier: 5
+  forwardForce: 1
+  holdTimer: 5
+  nodeSpawnTimer: 0
 --- !u!54 &420591456
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1392,7 +1397,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalPosition: {x: 0, y: 2, z: -1.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2323,7 +2328,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -511, y: 119.94116}
+  m_AnchoredPosition: {x: -511, y: 120}
   m_SizeDelta: {x: -1195, y: -580.8823}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1889844265
@@ -2567,27 +2572,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f957167d64575b46835d3e1c577338a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: 9a6e821cf47fd7f42a0aa4281200dd14, type: 2}
   pokemon:
-    id: 0
-    name: 
-    sprites:
-    - {fileID: 0}
-    - {fileID: 0}
-    baseStats:
+    base_pokedata: {fileID: 11400000, guid: fff8a9d38b9dc864191cedc96869a38f, type: 2}
+    currStats:
       type: 0
       HP: 0
       CP: 0
       weight: 0
       height: 0
       level: 0
-  currStats:
-    type: 0
-    HP: 0
-    CP: 0
-    weight: 0
-    height: 0
-    level: 0
   dataPanel: {fileID: 1889844263}
 --- !u!136 &1926344244
 CapsuleCollider:

@@ -15,7 +15,7 @@ MonoBehaviour:
   id: 9
   pokeName: Wartortle
   type: 4
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 61766da3a131c3d428aa2b572be80f8d, type: 3}
   max_HP: 147
   max_CP: 2653
   ave_weight: 85.5

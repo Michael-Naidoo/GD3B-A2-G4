@@ -15,7 +15,7 @@ MonoBehaviour:
   id: 5
   pokeName: Charmeleon
   type: 2
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: b173171231080664f88ff4cc2d249c35, type: 3}
   max_HP: 111
   max_CP: 1718
   ave_weight: 19

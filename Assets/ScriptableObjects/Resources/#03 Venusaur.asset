@@ -15,7 +15,7 @@ MonoBehaviour:
   id: 3
   pokeName: Venusaur
   type: 144
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: fc1578e4089c22b4dad48c720839a018, type: 3}
   max_HP: 149
   max_CP: 2973
   ave_weight: 100

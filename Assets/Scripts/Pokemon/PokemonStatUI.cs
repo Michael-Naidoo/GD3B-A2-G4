@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 public class PokemonStatUI : MonoBehaviour
 {
+    /// <summary>
+    /// Add all the UI Elements here PLEASEEEEE
+    /// </summary>
     public TextMeshProUGUI CPValue;
     public Slider CPScale;
     public Image pokemonSprite;
@@ -15,15 +18,19 @@ public class PokemonStatUI : MonoBehaviour
     public TextMeshProUGUI types;
     public TextMeshProUGUI height;
 
-
-    public void SetData(Pokemon currPokemon)
+    /// <summary>
+    /// This sets all the data on the UI
+    /// </summary>
+    /// <param name="currPokemon">The Pokemon to display on the stats</param>
+    /// 
+    public void DisplayData(Pokemon currPokemon)
     {
         CPValue.text = $"CP {currPokemon.currStats.CP}";
 
         CPScale.maxValue = currPokemon.base_pokedata.max_CP;
         CPScale.value = currPokemon.currStats.CP;
 
-        //pokemonSprite.sprite = currPokemon.sprites[0];
+        pokemonSprite.sprite = currPokemon.base_pokedata.sprite;
 
         pokemonName.text = currPokemon.base_pokedata.name;
 

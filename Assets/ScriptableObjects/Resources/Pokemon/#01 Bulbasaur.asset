@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 54e251ee4ec774c4991d8d3be2235d5f, type: 3}
-  m_Name: '#04 Charmander'
+  m_Name: '#01 Bulbasaur'
   m_EditorClassIdentifier: 
-  id: 4
-  pokeName: Charmander
-  type: 2
-  sprite: {fileID: 0}
-  max_HP: 79
-  max_CP: 936
-  ave_weight: 9
-  ave_height: 0.5
+  id: 1
+  pokeName: Bulbasaur
+  type: 144
+  sprite: {fileID: 21300000, guid: 594ee5ec664f19b40acd13c2780400df, type: 3}
+  max_HP: 89
+  max_CP: 1136
+  ave_weight: 6.9
+  ave_height: 0.7
   level: {x: 1, y: 15}
   evolutionStage: 1
   evolutions:
   - {fileID: 11400000}
-  - {fileID: 11400000, guid: 44da0ce5c92e95940bffd5ff67b30a1a, type: 2}
-  - {fileID: 11400000, guid: 11ec6e0d4760b6c4f9d5499233582e52, type: 2}
+  - {fileID: 11400000, guid: 64f6ee6e82a0d734e8d32131b710644b, type: 2}
+  - {fileID: 11400000, guid: 90a1fb381def6044f82da6e6e8441187, type: 2}

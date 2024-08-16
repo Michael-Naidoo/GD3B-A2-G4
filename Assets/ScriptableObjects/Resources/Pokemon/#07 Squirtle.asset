@@ -15,7 +15,7 @@ MonoBehaviour:
   id: 7
   pokeName: Squirtle
   type: 4
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 8da317e4c66460c47bf659e91c209e47, type: 3}
   max_HP: 88
   max_CP: 936
   ave_weight: 9

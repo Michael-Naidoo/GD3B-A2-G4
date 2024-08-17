@@ -242,6 +242,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e03942bf6e1c10b4a94af15ef63ca9a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PokeballData:
+    pokeball_type: 10
+    curveBall: 0
   pointA: {x: 0, y: 0}
   pointB: {x: 0, y: 0}
   pointC: {x: 0, y: 0}

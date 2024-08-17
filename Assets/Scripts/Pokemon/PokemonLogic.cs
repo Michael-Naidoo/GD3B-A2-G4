@@ -35,13 +35,17 @@ public class PokemonLogic : MonoBehaviour
 
         float randNum = Random.Range(0, 1f);
 
+        Debug.Log("Rand Num: "+ randNum);
+
         if(randNum <= probability)
         {
             //pokemon caught!
+            Debug.Log("Pokemon Caught");
         }
         else
         {
             //choose random tick (0-2)
+            Debug.Log("Failed...");
         }
     }
 
@@ -58,6 +62,8 @@ public class PokemonLogic : MonoBehaviour
         failChance = Mathf.Pow(failChance_preMult, multipliers);
         probability = 1 - failChance;
 
+        Debug.Log("Prob: " + probability);
+
         return probability;
     }
 
@@ -72,9 +78,14 @@ public class PokemonLogic : MonoBehaviour
         float ball, curve, berry, throwCalc;
 
         ball = (float)pokeball.pokeball_type / 10;
+
+        Debug.Log("Ball: " + ball);
+
         curve = pokeball.curveBall ? 1.7f : 1f;
         berry = (float)BerryEffect / 10;
         throwCalc = hitCircles.maxCircle.transform.localScale.x - hitCircles.critCircle.transform.localScale.x;
+
+        Debug.Log("Mult: " + ball * curve * berry * throwCalc);
 
         return ball * curve * berry * throwCalc;
     }

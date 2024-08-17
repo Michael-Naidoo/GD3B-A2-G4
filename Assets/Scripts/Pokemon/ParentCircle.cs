@@ -19,6 +19,8 @@ public class ParentCircle : MonoBehaviour
             hitCircle.critCircle.GetComponent<SpriteRenderer>().color = Color.yellow;
             StartCoroutine(ChangeColour());
         }
+
+        hitCircle.pokemonLogic.CatchPokemon(collision.gameObject.GetComponent<TouchRecognition>().PokeballData, hitCircle);
     }
 
     private IEnumerator ChangeColour()

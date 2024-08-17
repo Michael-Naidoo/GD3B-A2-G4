@@ -115,7 +115,9 @@ MonoBehaviour:
     - 2
     - 1.5
   GUI: {fileID: 6724164933101594142}
+  CPMultLevels: {fileID: 11400000, guid: c27307cfea64fef4ca03263975e5882e, type: 2}
   dataPanel: {fileID: 0}
+  BerryEffect: 10
 --- !u!114 &4351008335563994602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,6 +130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7addb88c3f4b7c142b551fb4ec528b49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pokemonLogic: {fileID: 0}
   circlesParent: {fileID: 8303408079381250131}
   maxCircle: {fileID: 4442017496545797840}
   critCircle: {fileID: 8655192589033461933}

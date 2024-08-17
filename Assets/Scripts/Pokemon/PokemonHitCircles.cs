@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(PokemonLogic))]
 public class PokemonHitCircles : MonoBehaviour
 {
-    private PokemonLogic pokemonLogic;
+    [HideInInspector] public PokemonLogic pokemonLogic;
     [SerializeField] private GameObject circlesParent;
     public GameObject maxCircle;
     public GameObject critCircle;

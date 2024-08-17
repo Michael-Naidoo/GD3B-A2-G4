@@ -19,6 +19,10 @@ public class Pokemon
     /// </summary>
     public void CalcCurrStats()
     {
+        currStats.id = base_pokedata.id;
+        currStats.pokemonName = base_pokedata.name;
+        currStats.sprite = base_pokedata.sprite;
+
         currStats.type = base_pokedata.type;
         currStats.HP = UnityEngine.Random.Range(0, base_pokedata.max_HP + 1);
         currStats.CP = UnityEngine.Random.Range(0, base_pokedata.max_CP + 1);
@@ -28,13 +32,22 @@ public class Pokemon
 
         currStats.level = UnityEngine.Random.Range(base_pokedata.level.x, base_pokedata.level.y);
 
+        currStats.dateCaught = "";
+
         heightScale = heightScales[base_pokedata.evolutionStage];
     }
+    public void StorePokemon() => currStats.dateCaught = DateTime.UtcNow.ToString("d");
+
 }
 
 [Serializable]
 public struct PokeStats
 {
+    public int id;
+    public string pokemonName;
+
+    public Sprite sprite;
+
     public PokemonType type;
 
     public int HP;

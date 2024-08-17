@@ -1,5 +1,6 @@
 using Enums;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu]
@@ -21,4 +22,11 @@ public class _PokeData : ScriptableObject
     [Space(10)]
     public float baseCaptureRate;
     public float baseFleeRate;
+}
+
+[CreateAssetMenu]
+[Serializable]
+public class _Pokemon : ScriptableObject
+{
+    public List<PokeStats> player_pokemon = new List<PokeStats>();
 }

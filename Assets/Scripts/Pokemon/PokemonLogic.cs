@@ -41,6 +41,12 @@ public class PokemonLogic : MonoBehaviour
         {
             //pokemon caught!
             Debug.Log("Pokemon Caught");
+
+            _Pokemon playerPokemon = Resources.Load<_Pokemon>("PlayerPokemon");
+            pokemon.StorePokemon();
+            playerPokemon.player_pokemon.Add(pokemon.currStats);
+
+            Destroy(gameObject);
         }
         else
         {

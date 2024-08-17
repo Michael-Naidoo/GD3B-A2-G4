@@ -8,4 +8,6 @@ public class PokeballData
 {
     public PokeBallTypes pokeball_type;
     public bool curveBall;
+
+    //smal change
 }

@@ -59,6 +59,7 @@ public enum PokeBallTypes
 //  divide by 10!!!!!!!!!!
 public enum BerryTypes
 {
+    None = 10,
     RazzBerry = 15,
     PinapBerry = 18,
     NanabBerry = 20

@@ -7,7 +7,7 @@ public class PokemonHitCircles : MonoBehaviour
 {
     private PokemonLogic pokemonLogic;
     [SerializeField] private GameObject circlesParent;
-    [SerializeField] private GameObject maxCircle;
+    public GameObject maxCircle;
     public GameObject critCircle;
 
     [SerializeField] private BoxCollider parentCollider;

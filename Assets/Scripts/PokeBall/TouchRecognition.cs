@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class TouchRecognition : MonoBehaviour
 {
+    public PokeballData PokeballData;
+
     // Coordinates of points A, B, and C
     public Vector2 pointA;
     public Vector2 pointB;

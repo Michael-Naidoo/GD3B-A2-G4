@@ -151,7 +151,7 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 420591450}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 07ed71deba78cd14281420ec2fb9f48e, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -248,11 +248,13 @@ MonoBehaviour:
   pointA: {x: 0, y: 0}
   pointB: {x: 0, y: 0}
   pointC: {x: 0, y: 0}
-  curveMultiplier: 1
+  curveMultiplier: -20
   forceMultiplier: 5
   forwardForce: 1
   holdTimer: 5
+  holdTimerMax: 10
   nodeSpawnTimer: 1
+  nodeSpawnTimerMax: 5
 --- !u!54 &420591456
 Rigidbody:
   m_ObjectHideFlags: 0

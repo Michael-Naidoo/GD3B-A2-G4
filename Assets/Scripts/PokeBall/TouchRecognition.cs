@@ -2,9 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Windows.Speech;
 
 public class TouchRecognition : MonoBehaviour
 {
+    private float tempMaxAngle;
+
+    private bool curveBall;
+    
     public PokeballData PokeballData;
 
     // Coordinates of points A, B, and C
@@ -21,7 +26,9 @@ public class TouchRecognition : MonoBehaviour
     public float forceMultiplier;
     public float forwardForce;
     public int holdTimer;
+    public int holdTimerMax;
     public int nodeSpawnTimer;
+    public int nodeSpawnTimerMax;
     private bool beingHeld = false;
 
     private void Start()
@@ -44,28 +51,65 @@ public class TouchRecognition : MonoBehaviour
             if (holdTimer == 0)
             {
                 moveDirection = previousPosition - transform.position;
-                holdTimer = 5;
+                holdTimer = holdTimerMax;
             }
 
             if (nodeSpawnTimer == 0)
             {
                 pointA = pointB;
                 pointB = transform.position;
-                nodeSpawnTimer = 5;
+                nodeSpawnTimer = nodeSpawnTimerMax;
             }
 
             holdTimer--;
             nodeSpawnTimer--;
         }
-        else if (Input.touchCount == 0 && beingHeld == true)
+        else if (Input.touchCount == 0)
         {
-            rb.AddForce((moveDirection.normalized + new Vector3(0, 0, -forwardForce)) * forceMultiplier * -1, ForceMode.Impulse);
+            if (beingHeld)
+            {
+                rb.AddForce((moveDirection.normalized + new Vector3(0, 0, -forwardForce)) * forceMultiplier * -1, ForceMode.Impulse);
+            }
+
             float distance = PerpendicularDistance(pointA, pointB, previousPosition);
-            rb.AddForce(new Vector3(distance * curveMultiplier, 0, 0), ForceMode.Acceleration);
-            Debug.Log(distance);
+
+            // Debug the distance and cross-product results
+            Debug.Log($"Distance: {distance}");
+
+            // Apply the force along the X-axis using the distance
+            if (distance * 1000 > 170 || distance * 1000 < -170)
+            {
+                PokeballData.curveBall = true;
+                curveBall = true;
+            }
+            else
+            {
+                PokeballData.curveBall = false;
+                curveBall = false;
+            }
+
+            if (curveBall)
+            {
+                rb.AddForce(new Vector3(distance * curveMultiplier, 0, 0), ForceMode.Acceleration);
+            }
+
+            // Adjust max angle based on distance
+            if (distance < 0 && distance * 1000 < -tempMaxAngle)
+            {
+                tempMaxAngle = -distance * 1000;
+                Debug.LogError("tempMaxAngle = " + distance * 1000);
+            }
+            else if (distance * 1000 > tempMaxAngle)
+            {
+                tempMaxAngle = distance * 1000;
+                Debug.LogError("tempMaxAngle = " + tempMaxAngle);
+            }
+
             beingHeld = false;
-            holdTimer = 5;
+            holdTimer = holdTimerMax;
         }
+
+        
     }
     
     float PerpendicularDistance(Vector2 A, Vector2 B, Vector2 C)
@@ -75,9 +119,27 @@ public class TouchRecognition : MonoBehaviour
         float B_coeff = -(C.x - A.x);
         float C_coeff = A.y * (C.x - A.x) - A.x * (C.y - A.y);
 
-        // Perpendicular distance formula
-        float distance = Mathf.Abs(A_coeff * B.x + B_coeff * B.y + C_coeff) / Mathf.Sqrt(A_coeff * A_coeff + B_coeff * B_coeff);
+        // Perpendicular distance formula (without absolute value)
+        float distance = (A_coeff * B.x + B_coeff * B.y + C_coeff) / Mathf.Sqrt(A_coeff * A_coeff + B_coeff * B_coeff);
+
+        // Determine the sign based on the cross product
+        // Vector AB = B - A
+        // Vector AC = C - A
+        Vector2 AB = B - A;
+        Vector2 AC = C - A;
+        float crossProduct = AB.x * AC.y - AB.y * AC.x;
+
+        // If the cross product is negative, the point is to the left; otherwise, it's to the right
+        if (crossProduct < 0)
+        {
+            distance = -Mathf.Abs(distance);
+        }
+        else
+        {
+            distance = Mathf.Abs(distance);
+        }
 
         return distance;
     }
+
 }

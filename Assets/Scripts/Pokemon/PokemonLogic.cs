@@ -56,11 +56,11 @@ public class PokemonLogic : MonoBehaviour
     /// <returns></returns>
     private float CatchProbability(float multipliers)
     {
-        float failChance_preMult, failChance, probability;
+        float failChance_preMult, probability;
 
         failChance_preMult = 1 - (pokemon.base_pokedata.baseCaptureRate / (2 * CPMultLevels.CPMult[(int)pokemon.currStats.level - 1]));
-        failChance = Mathf.Pow(failChance_preMult, multipliers);
-        probability = 1 - failChance;
+        probability = Mathf.Pow(failChance_preMult, multipliers);
+        //probability = failChance;
 
         Debug.Log("Prob: " + probability);
 

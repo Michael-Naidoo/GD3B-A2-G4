@@ -11,12 +11,18 @@ public class Pokemon
 
     public _PokeData base_pokedata;                 //this is the base stats of the specific pokemon "species"
     public PokeStats currStats = new PokeStats();   //a struct of THIS pokemons stats
+    public float heightScale;
+    [SerializeField] private float[] heightScales;
 
     /// <summary>
     /// Calculates the stats of the current pokemon based off the base stats
     /// </summary>
     public void CalcCurrStats()
     {
+        currStats.id = base_pokedata.id;
+        currStats.pokemonName = base_pokedata.name;
+        currStats.sprite = base_pokedata.sprite;
+
         currStats.type = base_pokedata.type;
         currStats.HP = UnityEngine.Random.Range(0, base_pokedata.max_HP + 1);
         currStats.CP = UnityEngine.Random.Range(0, base_pokedata.max_CP + 1);
@@ -25,12 +31,23 @@ public class Pokemon
         currStats.height = UnityEngine.Random.Range(base_pokedata.ave_height * 0.75f, base_pokedata.ave_height * 1.25f);
 
         currStats.level = UnityEngine.Random.Range(base_pokedata.level.x, base_pokedata.level.y);
+
+        currStats.dateCaught = "";
+
+        heightScale = heightScales[base_pokedata.evolutionStage];
     }
+    public void StorePokemon() => currStats.dateCaught = DateTime.UtcNow.ToString("d");
+
 }
 
 [Serializable]
 public struct PokeStats
 {
+    public int id;
+    public string pokemonName;
+
+    public Sprite sprite;
+
     public PokemonType type;
 
     public int HP;
@@ -42,6 +59,23 @@ public struct PokeStats
     public float level;
 
     public string dateCaught;
+}
+
+//  divide by 10!!!!!!!!!!
+public enum PokeBallTypes
+{
+    Pokeball = 10,
+    Greatball = 15,
+    UltraBall = 20
+}
+
+//  divide by 10!!!!!!!!!!
+public enum BerryTypes
+{
+    None = 10,
+    RazzBerry = 15,
+    PinapBerry = 18,
+    NanabBerry = 20
 }
 
 namespace Enums

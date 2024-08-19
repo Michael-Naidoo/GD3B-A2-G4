@@ -26,7 +26,10 @@ public class PokedexManager : MonoBehaviour
     private void CreateCard(PokeStats pokemon)
     {
         GameObject newCard = Instantiate(pokemonCard, pokemonCardParent);
-        newCard.GetComponent<PokeCard>().image.sprite = pokemon.sprite;
-        newCard.GetComponent<PokeCard>().title.text = pokemon.pokemonName;   
+        PokeCard card = newCard.GetComponent<PokeCard>();
+
+        card.pokeStats = pokemon;
+        card.image.sprite = pokemon.sprite;
+        card.title.text = pokemon.pokemonName;   
     }
 }

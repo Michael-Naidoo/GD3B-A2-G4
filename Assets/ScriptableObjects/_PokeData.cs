@@ -31,4 +31,5 @@ public class _PokeData : ScriptableObject
 public class _Pokemon : ScriptableObject
 {
     public List<PokeStats> player_pokemon = new List<PokeStats>();
+    //here
 }

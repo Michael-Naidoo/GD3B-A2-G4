@@ -68,7 +68,7 @@ public class PokemonLogic : MonoBehaviour
         failChance = Mathf.Pow(failChance_preMult, multipliers);
         probability = 1 - failChance;
 
-        Debug.Log("Prob: " + probability + "  " + "Radius: " + pokemonHitCircles.maxCircle.transform.localScale.x + " vs " + pokemonHitCircles.critCircle.transform.localScale.x);
+        //Debug.Log("Prob: " + probability + "  " + "Radius: " + pokemonHitCircles.maxCircle.transform.localScale.x + " vs " + pokemonHitCircles.critCircle.transform.localScale.x);
 
 
         return probability;
@@ -102,13 +102,13 @@ public class PokemonLogic : MonoBehaviour
 
         ball = (float)pokeball.pokeball_type / 10;
 
-        Debug.Log("Ball: " + ball);
+        //Debug.Log("Ball: " + ball);
 
         curve = pokeball.curveBall ? 1.7f : 1f;
         berry = (float)BerryEffect / 10;
         throwCalc = 1.5f;
 
-        Debug.Log("Mult: " + ball * curve * berry * throwCalc);
+        //Debug.Log("Mult: " + ball * curve * berry * throwCalc);
 
         return ball * curve * berry * throwCalc;
     }

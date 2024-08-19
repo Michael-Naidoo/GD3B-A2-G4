@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class PokeCard : MonoBehaviour
 {
+    public PokeStats pokeStats;
     public Image image;
     public TextMeshProUGUI title;
 }

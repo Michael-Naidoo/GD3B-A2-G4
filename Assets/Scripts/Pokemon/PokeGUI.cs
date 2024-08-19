@@ -13,6 +13,9 @@ public class PokeGUI : MonoBehaviour
         GetYPos();
     }
 
+    /// <summary>
+    /// Sets the GUI pos so that its not floating in the air
+    /// </summary>
     private void GetYPos()
     {
         float spriteHeight = sprite.rect.height/sprite.pixelsPerUnit;

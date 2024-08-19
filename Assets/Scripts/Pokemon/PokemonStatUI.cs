@@ -43,4 +43,24 @@ public class PokemonStatUI : MonoBehaviour
 
         height.text = currPokemon.currStats.height.ToString("0.00") + "m";
     }
+    public void DisplayData(PokeStats currPokemon)
+    {
+        CPValue.text = $"CP {currPokemon.CP}";
+
+        CPScale.maxValue = currPokemon.maxCP;
+        CPScale.value = currPokemon.CP;
+
+        pokemonSprite.sprite = currPokemon.sprite;
+
+        pokemonName.text = currPokemon.pokemonName;
+
+        HPScale.maxValue = currPokemon.HP;
+        HPScale.value = currPokemon.HP;
+
+        weight.text = currPokemon.weight.ToString("0.00") + "kg";
+
+        types.text = currPokemon.type.ToString();
+
+        height.text = currPokemon.height.ToString("0.00") + "m";
+    }
 }

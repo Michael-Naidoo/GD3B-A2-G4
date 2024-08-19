@@ -15,7 +15,7 @@ MonoBehaviour:
   id: 2
   pokeName: Ivysaur
   type: 144
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 094be6771c3317043b54d7a1535885e7, type: 3}
   max_HP: 115
   max_CP: 1797
   ave_weight: 13

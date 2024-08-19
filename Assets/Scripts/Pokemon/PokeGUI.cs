@@ -1,0 +1,31 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PokeGUI : MonoBehaviour
+{
+    [SerializeField] private Sprite sprite;
+    [SerializeField] private LayerMask ground;
+
+    private void Start()
+    {
+        sprite = GetComponent<SpriteRenderer>().sprite;
+        GetYPos();
+    }
+
+    private void GetYPos()
+    {
+        float spriteHeight = sprite.rect.height/sprite.pixelsPerUnit;
+
+        float yPos = spriteHeight * Mathf.Sin(transform.eulerAngles.x * Mathf.Deg2Rad);
+
+        Debug.DrawLine(transform.position, transform.position-new Vector3(0, yPos, 0));
+
+        RaycastHit[] hit = Physics.RaycastAll(transform.position, Vector3.down, 10, ground);
+        float distance = hit[0].distance;
+
+        float dif = distance - yPos;
+        transform.transform.position = transform.position - new Vector3(0, dif + 0.15f, 0);
+
+    }
+}

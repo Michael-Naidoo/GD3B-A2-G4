@@ -17,6 +17,7 @@ public class PokemonStatUI : MonoBehaviour
     public TextMeshProUGUI weight;
     public TextMeshProUGUI types;
     public TextMeshProUGUI height;
+    public TextMeshProUGUI dateCaught;
 
     /// <summary>
     /// This sets all the data on the UI
@@ -62,5 +63,7 @@ public class PokemonStatUI : MonoBehaviour
         types.text = currPokemon.type.ToString();
 
         height.text = currPokemon.height.ToString("0.00") + "m";
+
+        dateCaught.text = currPokemon.dateCaught;
     }
 }

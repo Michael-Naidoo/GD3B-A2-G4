@@ -6,6 +6,7 @@ public class CameraFollow : MonoBehaviour
 {
     private Transform player;
     private Vector3 offset;
+    public float lerpMultiplier;
 
     private void Start()
     {
@@ -17,7 +18,7 @@ public class CameraFollow : MonoBehaviour
     {
         Vector3 targetPos = player.position + offset;
 
-        transform.position = Vector3.Lerp(transform.position, targetPos, Time.deltaTime * 2);
+        transform.position = Vector3.Lerp(transform.position, targetPos, Time.deltaTime * lerpMultiplier);
 
     }
 }

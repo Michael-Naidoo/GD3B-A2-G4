@@ -1133,7 +1133,7 @@ GameObject:
   - component: {fileID: 1189271869}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1580,6 +1580,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02ed3935ded0af9408addf57fe96dc94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lerpMultiplier: 2
 --- !u!1 &1651782254
 GameObject:
   m_ObjectHideFlags: 0

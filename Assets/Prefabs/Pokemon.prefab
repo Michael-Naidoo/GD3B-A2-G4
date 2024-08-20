@@ -108,6 +108,7 @@ MonoBehaviour:
       type: 0
       HP: 0
       CP: 0
+      maxCP: 0
       weight: 0
       height: 0
       level: 0
@@ -215,7 +216,7 @@ SpriteRenderer:
   m_GameObject: {fileID: 3746629101858253085}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 0
+  m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
   m_MotionVectors: 1

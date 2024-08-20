@@ -22,6 +22,6 @@ public class WildPokemon : MonoBehaviour
         float distance = hit[0].distance;
 
         float dif = distance - yPos;
-        GUI.transform.transform.position = GUI.transform.position - new Vector3(0, dif + 0.15f, 0);
+        GUI.transform.transform.position = GUI.transform.position - new Vector3(0, dif + 0.25f, 0);
     }
 }

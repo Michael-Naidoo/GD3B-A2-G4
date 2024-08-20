@@ -5,6 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(GridSpawner))]
 public class PokeObstacleSpawner : MonoBehaviour
 {
+    public static PokeObstacleSpawner Instance { get; private set; }
+
     private GridSpawner gridSpawner;
 
     [Header("Pokemon")]
@@ -16,17 +18,22 @@ public class PokeObstacleSpawner : MonoBehaviour
     public GameObject[] p_obstacles;
     public Transform[] obstaclePoints;
 
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     private void Start()
     {
         gridSpawner = GetComponent<GridSpawner>();
 
         gridSpawner.GenerateGrid();
-        PokemonSpawn();
+        //PokemonSpawn();
 
         SpawnObstacles();
     }
 
-    private void PokemonSpawn()
+    public void PokemonSpawn()
     {
         int randNum = Random.Range(0, gridSpawner.points.Length);
 

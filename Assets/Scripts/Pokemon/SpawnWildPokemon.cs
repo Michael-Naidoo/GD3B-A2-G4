@@ -1,17 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.Properties;
 using UnityEngine;
 
 public class SpawnWildPokemon : MonoBehaviour
 {
     [SerializeField] private GameObject p_wildPokemon;
-    [SerializeField] private Transform[] spawnPoints = new Transform[0];
     [SerializeField] private Transform wildPokemon_parent;
+    private Transform[] spawnPoints = new Transform[0];
+
+    [Space(10)]
+    [SerializeField] private List<GameObject> activePokemon = new List<GameObject>();
+    [SerializeField] private int max_activePokemon;
+    [SerializeField] private Vector2 despawnTimerRange;
+
+    [Space(10)]
     [SerializeField] private float spawnRadius;
     [SerializeField] private float spawnTime;
     [SerializeField] private float currTime;
     [SerializeField] private int pokemonEachSpawnWave;
+
 
     private Stack<Transform> spawnStack = new Stack<Transform>();
 
@@ -26,15 +35,18 @@ public class SpawnWildPokemon : MonoBehaviour
 
     private void Update()
     {
-        if (currTime <= 0)
+        if (activePokemon.Count < max_activePokemon)
         {
-            currTime = spawnTime;
-            for (int i = 0; i < pokemonEachSpawnWave; i++)
+            if (currTime <= 0)
             {
-                SelectSpawners();
+                currTime = spawnTime;
+                for (int i = 0; i < pokemonEachSpawnWave; i++)
+                {
+                    SelectSpawners();
+                }
             }
+            currTime -= Time.deltaTime;
         }
-        currTime -= Time.deltaTime;
     }
 
     private void SelectSpawners()
@@ -53,6 +65,9 @@ public class SpawnWildPokemon : MonoBehaviour
 
         newPokemon.GetComponent<WildPokemon>().pokeData = allPokemon[Random.Range(0, allPokemon.Length)];
         newPokemon.GetComponent<WildPokemon>().SetGUI();
+
+        activePokemon.Add(newPokemon);
+        StartCoroutine(DespawnTimer(newPokemon));
     }
     private void ShuffleIntoStack(Transform[] pointArray)
     {
@@ -66,5 +81,15 @@ public class SpawnWildPokemon : MonoBehaviour
         }
 
         spawnPoints = spawnStack.ToArray();
+    }
+
+    private IEnumerator DespawnTimer(GameObject pokemon)
+    {
+        float randNum = Random.Range(despawnTimerRange.x, despawnTimerRange.y);
+
+        yield return new WaitForSeconds(randNum);
+
+        activePokemon.Remove(pokemon);
+        Destroy(pokemon);
     }
 }

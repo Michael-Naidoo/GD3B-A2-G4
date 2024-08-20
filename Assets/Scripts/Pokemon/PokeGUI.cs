@@ -7,17 +7,13 @@ public class PokeGUI : MonoBehaviour
     [SerializeField] private Sprite sprite;
     [SerializeField] private LayerMask ground;
 
-    private void Start()
-    {
-        sprite = GetComponent<SpriteRenderer>().sprite;
-        GetYPos();
-    }
-
     /// <summary>
     /// Sets the GUI pos so that its not floating in the air
     /// </summary>
     private void GetYPos()
     {
+        sprite = GetComponent<SpriteRenderer>().sprite;
+
         float spriteHeight = sprite.rect.height/sprite.pixelsPerUnit;
 
         float yPos = spriteHeight * Mathf.Sin(transform.eulerAngles.x * Mathf.Deg2Rad);

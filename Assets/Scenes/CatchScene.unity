@@ -1118,7 +1118,7 @@ PrefabInstance:
       objectReference: {fileID: 2471536942003723757, guid: 452c1805b245c33468e581484cd6e945, type: 3}
     - target: {fileID: 1253596591312146188, guid: df05169027078e14ca32c0c75a515ff0, type: 3}
       propertyPath: maxObstacles
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1253596591312146188, guid: df05169027078e14ca32c0c75a515ff0, type: 3}
       propertyPath: pokemonParent
@@ -1140,6 +1140,10 @@ PrefabInstance:
       propertyPath: p_obstacles.Array.data[2]
       value: 
       objectReference: {fileID: 5060513224904397919, guid: 666559d508b564b41a83541d5cd2d2fc, type: 3}
+    - target: {fileID: 6224443071596356790, guid: df05169027078e14ca32c0c75a515ff0, type: 3}
+      propertyPath: gridSize.x
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6224443071596356790, guid: df05169027078e14ca32c0c75a515ff0, type: 3}
       propertyPath: gridDistance.x
       value: 2

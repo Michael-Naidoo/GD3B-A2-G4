@@ -46,7 +46,7 @@ public class PokemonLogic : MonoBehaviour
 
         if(randNum <= probability)
         {
-            //********************pokemon caught!**************************
+            //pokemon caught!
 
             //_Pokemon playerPokemon = Resources.Load<_Pokemon>("PlayerPokemon");
 

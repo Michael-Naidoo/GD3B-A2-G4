@@ -809,6 +809,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e03942bf6e1c10b4a94af15ef63ca9a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  curveBall: 0
   PokeballData:
     pokeball_type: 0
     curveBall: 0
@@ -816,7 +817,8 @@ MonoBehaviour:
   pointB: {x: 0, y: 0}
   pointC: {x: 0, y: 0}
   curveMultiplier: 0
-  forceMultiplier: 0
+  forceMultiplierX: 0
+  forceMultiplierY: 0
   forwardForce: 0
   holdTimer: 0
   holdTimerMax: 0
@@ -3419,6 +3421,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f957167d64575b46835d3e1c577338a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerPokemon: {fileID: 0}
   pokemon:
     base_pokedata: {fileID: 11400000, guid: 64f6ee6e82a0d734e8d32131b710644b, type: 2}
     currStats:
@@ -4741,11 +4744,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2597159969876572323, guid: 76510486d9caf494bae08dffb6429648, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.02
+      value: 2.64
       objectReference: {fileID: 0}
     - target: {fileID: 2597159969876572323, guid: 76510486d9caf494bae08dffb6429648, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.39
+      value: 2.96
       objectReference: {fileID: 0}
     - target: {fileID: 2597159969876572323, guid: 76510486d9caf494bae08dffb6429648, type: 3}
       propertyPath: m_LocalPosition.z

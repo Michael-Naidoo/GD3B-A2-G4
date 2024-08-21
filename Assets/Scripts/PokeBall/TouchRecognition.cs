@@ -8,7 +8,7 @@ public class TouchRecognition : MonoBehaviour
 {
     private float tempMaxAngle;
 
-    private bool curveBall;
+    [SerializeField]private bool curveBall;
     
     public PokeballData PokeballData;
 
@@ -79,11 +79,13 @@ public class TouchRecognition : MonoBehaviour
             // Apply the force along the X-axis using the distance
             if (distance * 1000 > 170 || distance * 1000 < -170)
             {
+                Debug.LogError("curving");
                 PokeballData.curveBall = true;
                 curveBall = true;
             }
             else
             {
+                
                 PokeballData.curveBall = false;
                 curveBall = false;
             }

@@ -4,15 +4,33 @@ using UnityEngine;
 
 public class GUIScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private GameObject pokeball;
+    public enum PokeballState
     {
-        
+        idle,
+        drawAttention,
+        spinninClockwise,
+        spinningAnticlockwise
     }
 
-    // Update is called once per frame
+    public PokeballState pokeballState;
     void Update()
     {
-        
+        switch (pokeballState)
+        {
+            case PokeballState.idle:
+                transform.position = pokeball.transform.position;
+                return;
+            case PokeballState.drawAttention:
+                return;
+            case PokeballState.spinninClockwise:
+                return;
+            case PokeballState.spinningAnticlockwise:
+                return;
+            default:
+                pokeballState = PokeballState.idle;
+                return;
+            
+        }
     }
 }

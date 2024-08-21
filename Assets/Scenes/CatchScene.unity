@@ -199,8 +199,8 @@ MonoBehaviour:
   pointC: {x: 0, y: 0}
   curveMultiplier: 0
   forceMultiplierX: 10
-  forceMultiplierY: 0
-  forwardForce: 5
+  forceMultiplierY: -2
+  forwardForce: 7.5
   holdTimer: 5
   holdTimerMax: 10
   nodeSpawnTimer: 1
@@ -742,6 +742,7 @@ GameObject:
   - component: {fileID: 1503149915}
   - component: {fileID: 1503149914}
   - component: {fileID: 1503149916}
+  - component: {fileID: 1503149913}
   m_Layer: 0
   m_Name: GUI
   m_TagString: Untagged

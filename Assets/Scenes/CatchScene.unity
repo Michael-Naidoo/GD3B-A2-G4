@@ -176,7 +176,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30d0c14e7ba120b478688529becc28cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pokeball_buttons: []
+  pokeball_buttons:
+  - {fileID: 2138197489}
+  - {fileID: 1833356833}
+  - {fileID: 2051949842}
+  current_pokeball: {fileID: 2138197489}
   isOpen: 0
   animator: {fileID: 164143299}
 --- !u!95 &164143299
@@ -1306,7 +1310,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   manager: {fileID: 164143298}
   pokeball_type: 15
-  image: {fileID: 0}
+  image: {fileID: 1833356831}
   isCurrentBall: 0
 --- !u!1 &1908911832
 GameObject:
@@ -1581,7 +1585,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   manager: {fileID: 164143298}
   pokeball_type: 20
-  image: {fileID: 0}
+  image: {fileID: 2051949840}
   isCurrentBall: 0
 --- !u!1 &2124676972
 GameObject:
@@ -1781,7 +1785,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   manager: {fileID: 164143298}
   pokeball_type: 10
-  image: {fileID: 0}
+  image: {fileID: 2138197487}
   isCurrentBall: 1
 --- !u!1001 &5676363925650947040
 PrefabInstance:

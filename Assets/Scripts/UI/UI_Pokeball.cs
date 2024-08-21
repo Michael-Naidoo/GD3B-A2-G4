@@ -25,5 +25,9 @@ public class UI_Pokeball : MonoBehaviour, IPointerClickHandler
                 manager.isOpen = true;
             }
         }
+        else
+        {
+            manager.SelectPokeball(this);
+        }
     }
 }

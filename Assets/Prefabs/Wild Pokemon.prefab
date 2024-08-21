@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8908166146277130655}
   - component: {fileID: 857026902902091814}
   - component: {fileID: 8443701531928267822}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Wild Pokemon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -134,7 +134,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5360359126265288900}
   - component: {fileID: 688838840811225491}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}

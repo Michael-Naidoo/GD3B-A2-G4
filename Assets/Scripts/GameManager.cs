@@ -6,7 +6,9 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
-    
+
+    public _PokeData pokeData;
+
     public BaseGameState currentState;
     public CatchState catchState = new CatchState();
     public WalkState walkState = new WalkState();
@@ -27,7 +29,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        currentState = catchState;
+        currentState = walkState;
         currentState.EnterState(this);
     }
 

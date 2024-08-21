@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerInput : MonoBehaviour
 {
     [SerializeField] private NavMeshAgent agent;
+    [SerializeField] private LayerMask pokemonLayer;
+    [SerializeField] private LayerMask groundLayer;
 
     private void Update()
     {
@@ -26,9 +28,18 @@ public class PlayerMovement : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(pos);
         RaycastHit hit;
 
-        if(Physics.Raycast(ray, out hit) )
+        //check if it hits a pokemon then if it hits the ground 
+
+        if (Physics.Raycast(ray, out hit, 100, pokemonLayer))
+        {
+            // Game Manager transfer data over to other scene
+            GameManager.Instance.pokeData = hit.transform.GetComponent<WildPokemon>().pokeData;
+            Debug.Log("HIT POKEMON");
+        }
+        else if (Physics.Raycast(ray, out hit, 100, groundLayer))
         {
             agent.SetDestination(hit.point);
         }
     }
+
 }

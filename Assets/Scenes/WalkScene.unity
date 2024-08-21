@@ -2149,7 +2149,7 @@ MonoBehaviour:
   max_activePokemon: 25
   despawnTimerRange: {x: 15, y: 30}
   spawnRadius: 10
-  spawnTime: 5
+  spawnTime: 1
   currTime: 0
   pokemonEachSpawnWave: 10
 --- !u!1 &1925443691

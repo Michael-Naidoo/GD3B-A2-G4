@@ -197,9 +197,10 @@ MonoBehaviour:
   pointA: {x: 0, y: 0}
   pointB: {x: 0, y: 0}
   pointC: {x: 0, y: 0}
-  curveMultiplier: -20
-  forceMultiplier: 5
-  forwardForce: 1
+  curveMultiplier: 0
+  forceMultiplierX: 10
+  forceMultiplierY: 0
+  forwardForce: 5
   holdTimer: 5
   holdTimerMax: 10
   nodeSpawnTimer: 1
@@ -740,7 +741,6 @@ GameObject:
   - component: {fileID: 1503149912}
   - component: {fileID: 1503149915}
   - component: {fileID: 1503149914}
-  - component: {fileID: 1503149913}
   - component: {fileID: 1503149916}
   m_Layer: 0
   m_Name: GUI
@@ -756,7 +756,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1503149911}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1013,7 +1013,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -511, y: 128}
+  m_AnchoredPosition: {x: -511, y: NaN}
   m_SizeDelta: {x: -1195, y: -580.8823}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1889844265

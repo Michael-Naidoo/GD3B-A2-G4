@@ -16,11 +16,14 @@ public class PlayerInput : MonoBehaviour
             GetTargetPos(Input.mousePosition);
         }
 
-        Touch touch = Input.GetTouch(0);
-
-        if (touch.phase == TouchPhase.Began)
+        if (Input.touchCount > 0)
         {
-            GetTargetPos(touch.position);
+            Touch touch = Input.GetTouch(0);
+
+            if (touch.phase == TouchPhase.Began)
+            {
+                GetTargetPos(touch.position);
+            }
         }
     }
     private void GetTargetPos(Vector2 pos)
@@ -38,7 +41,7 @@ public class PlayerInput : MonoBehaviour
             // play little cut scene
             // go to next scene
             GameManager.Instance.SwitchStates(GameManager.Instance.catchState);
-            
+
         }
         else if (Physics.Raycast(ray, out hit, 100, groundLayer))
         {

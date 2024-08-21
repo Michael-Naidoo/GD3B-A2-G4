@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4351008335563994602}
   m_Layer: 0
   m_Name: Pokemon
-  m_TagString: Untagged
+  m_TagString: Pokemon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f957167d64575b46835d3e1c577338a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerPokemon: {fileID: 11400000, guid: e569981bada109c40a778da948c1db9e, type: 2}
   pokemon:
     base_pokedata: {fileID: 11400000, guid: 64f6ee6e82a0d734e8d32131b710644b, type: 2}
     currStats:

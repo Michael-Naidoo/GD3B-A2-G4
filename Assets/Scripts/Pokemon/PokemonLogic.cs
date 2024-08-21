@@ -7,6 +7,7 @@ using UnityEngine;
 public class PokemonLogic : MonoBehaviour
 {
     private PokemonHitCircles pokemonHitCircles;
+    [SerializeField] private _Pokemon playerPokemon;
 
     public Pokemon pokemon;
     public SpriteRenderer GUI;
@@ -21,9 +22,17 @@ public class PokemonLogic : MonoBehaviour
 
         pokemon.base_pokedata = GameManager.Instance.pokeData;
         pokemon.CalcCurrStats();
+        pokemonHitCircles.PrepareHitCircles();
 
         //dataPanel.GetComponent<PokemonStatUI>().DisplayData(pokemon);
         GUI.sprite = pokemon.base_pokedata.sprite;
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.Instance.SwitchStates(GameManager.Instance.walkState);
+        Destroy(gameObject);
+        Debug.Log("POKEMON DESTROYED");
     }
 
     public void CatchPokemon(PokeballData pokeball, PokemonHitCircles hitCircles)
@@ -38,13 +47,17 @@ public class PokemonLogic : MonoBehaviour
         if(randNum <= probability)
         {
             //pokemon caught!
-            Debug.Log("Pokemon Caught");
 
-            _Pokemon playerPokemon = Resources.Load<_Pokemon>("PlayerPokemon");
-            pokemon.StorePokemon();
+            //_Pokemon playerPokemon = Resources.Load<_Pokemon>("PlayerPokemon");
+
+            //Debug.Log(playerPokemon);
+            pokemon.AddCatchDate();
             playerPokemon.player_pokemon.Add(pokemon.currStats);
 
-            Destroy(gameObject);
+            Debug.Log("Pokemon Caught");
+            GameManager.Instance.SwitchStates(GameManager.Instance.walkState);
+
+            //Destroy(this);
         }
         else
         {

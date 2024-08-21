@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(PokemonLogic))]
+
 public class PokemonHitCircles : MonoBehaviour
 {
     [HideInInspector] public PokemonLogic pokemonLogic;
@@ -25,7 +25,7 @@ public class PokemonHitCircles : MonoBehaviour
     }
     private void Start()
     {
-        PrepareHitCircles();
+        //PrepareHitCircles();
     }
 
     private void Update()

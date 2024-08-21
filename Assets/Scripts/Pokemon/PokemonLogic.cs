@@ -51,7 +51,9 @@ public class PokemonLogic : MonoBehaviour
             pokemon.StorePokemon();
             playerPokemon.player_pokemon.Add(pokemon.currStats);
 
-            Destroy(this);
+            GameManager.Instance.SwitchStates(GameManager.Instance.walkState);
+
+            //Destroy(this);
         }
         else
         {

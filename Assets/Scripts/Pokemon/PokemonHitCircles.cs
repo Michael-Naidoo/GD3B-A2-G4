@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(PokemonLogic))]
+
 public class PokemonHitCircles : MonoBehaviour
 {
     [HideInInspector] public PokemonLogic pokemonLogic;
@@ -17,6 +17,8 @@ public class PokemonHitCircles : MonoBehaviour
     [SerializeField] private float currShrinkTime;
     public float shrinkTime;
 
+    [SerializeField] private Gradient difficultyColour;
+
     private void Awake()
     {
         pokemonLogic = GetComponent<PokemonLogic>();
@@ -30,6 +32,8 @@ public class PokemonHitCircles : MonoBehaviour
     {
         parentCollider.enabled = maxTrigger_enter;
 
+        //debugging in editor
+        GetCritColour();
         if (currShrinkTime <= 0)
         {
             currShrinkTime = shrinkTime;
@@ -42,12 +46,23 @@ public class PokemonHitCircles : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Sets the size of the max circle and gets the colour of the crit circle
+    /// </summary>
     public void PrepareHitCircles()
     {
         maxCircle.transform.localScale = Vector3.one * pokemonLogic.pokemon.currStats.height * pokemonLogic.pokemon.heightScale;
 
+        
         //determine pokemon catch difficulty - MATCH COLOUR TO DIFFICULTY
     }
 
+    public void GetCritColour()
+    { 
+        PokeballData playerBall = GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).GetComponent<TouchRecognition>().PokeballData;
+        float prob = pokemonLogic.CatchProbability(pokemonLogic.Multiplier(playerBall));
+
+        critCircle.GetComponent<SpriteRenderer>().color = difficultyColour.Evaluate(1-prob);
+    }
 
 }

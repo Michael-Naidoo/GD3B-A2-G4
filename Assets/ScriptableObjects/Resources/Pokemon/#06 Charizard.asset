@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 54e251ee4ec774c4991d8d3be2235d5f, type: 3}
-  m_Name: '#03 Venusaur'
+  m_Name: '#06 Charizard'
   m_EditorClassIdentifier: 
-  id: 3
-  pokeName: Venusaur
-  type: 144
-  sprite: {fileID: 0}
-  max_HP: 149
-  max_CP: 2973
-  ave_weight: 100
-  ave_height: 2
-  level: {x: 32, y: 50}
+  id: 6
+  pokeName: Charizard
+  type: 514
+  sprite: {fileID: 21300000, guid: 32086975782f31543978a4ffe5b43104, type: 3}
+  max_HP: 145
+  max_CP: 2653
+  ave_weight: 85.5
+  ave_height: 1.6
+  level: {x: 36, y: 50}
   evolutionStage: 3
   evolutions:
-  - {fileID: 11400000, guid: fff8a9d38b9dc864191cedc96869a38f, type: 2}
-  - {fileID: 11400000, guid: 64f6ee6e82a0d734e8d32131b710644b, type: 2}
+  - {fileID: 11400000, guid: 553b6f7bb9c4b8540b023e38c51fce88, type: 2}
+  - {fileID: 11400000, guid: 44da0ce5c92e95940bffd5ff67b30a1a, type: 2}
   - {fileID: 11400000}
   baseCaptureRate: 0.05
   baseFleeRate: 0.05

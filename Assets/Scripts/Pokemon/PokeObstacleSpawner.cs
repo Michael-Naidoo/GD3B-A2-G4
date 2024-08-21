@@ -5,7 +5,9 @@ using UnityEngine;
 [RequireComponent(typeof(GridSpawner))]
 public class PokeObstacleSpawner : MonoBehaviour
 {
-    private GridSpawner gridSpawner;
+    public static PokeObstacleSpawner Instance { get; private set; }
+
+    [HideInInspector] public GridSpawner gridSpawner;
 
     [Header("Pokemon")]
     public GameObject p_pokemon;        //pokemon prefab
@@ -16,21 +18,32 @@ public class PokeObstacleSpawner : MonoBehaviour
     public GameObject[] p_obstacles;
     public Transform[] obstaclePoints;
 
+    private void Awake()
+    {
+        Instance = this;
+        gridSpawner = GetComponent<GridSpawner>();
+    }
+
     private void Start()
     {
-        gridSpawner = GetComponent<GridSpawner>();
 
         gridSpawner.GenerateGrid();
         PokemonSpawn();
+        //PokemonSpawn();
 
-        SpawnObstacles();
+        //SpawnObstacles();
     }
 
-    private void PokemonSpawn()
+    public void PokemonSpawn()
     {
         int randNum = Random.Range(0, gridSpawner.points.Length);
 
         GameObject pokemon = Instantiate(p_pokemon, gridSpawner.points[randNum].position, Quaternion.identity, pokemonParent);
+
+        //pokemon.GetComponent<PokemonLogic>().pokemon.base_pokedata = GameManager.Instance.pokeData;
+        //pokemon.GetComponent<PokemonLogic>().pokemon.CalcCurrStats();
+
+
         pokemon.transform.position += new Vector3(0, 1, 0);
         
     }

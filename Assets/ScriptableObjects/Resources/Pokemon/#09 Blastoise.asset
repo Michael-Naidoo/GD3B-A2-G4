@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 54e251ee4ec774c4991d8d3be2235d5f, type: 3}
-  m_Name: '#06 Charizard'
+  m_Name: '#09 Blastoise'
   m_EditorClassIdentifier: 
-  id: 6
-  pokeName: Charizard
-  type: 514
-  sprite: {fileID: 0}
-  max_HP: 145
+  id: 9
+  pokeName: Wartortle
+  type: 4
+  sprite: {fileID: 21300000, guid: 61766da3a131c3d428aa2b572be80f8d, type: 3}
+  max_HP: 147
   max_CP: 2653
   ave_weight: 85.5
   ave_height: 1.6
   level: {x: 36, y: 50}
   evolutionStage: 3
   evolutions:
-  - {fileID: 11400000, guid: 553b6f7bb9c4b8540b023e38c51fce88, type: 2}
-  - {fileID: 11400000, guid: 44da0ce5c92e95940bffd5ff67b30a1a, type: 2}
+  - {fileID: 11400000, guid: 9a6e821cf47fd7f42a0aa4281200dd14, type: 2}
+  - {fileID: 11400000, guid: ae696dacbb1ce45429a6bc0ab022c4ae, type: 2}
   - {fileID: 11400000}
   baseCaptureRate: 0.05
   baseFleeRate: 0.05

@@ -74,7 +74,7 @@ public class TouchRecognition : MonoBehaviour
             float distance = PerpendicularDistance(pointA, pointB, previousPosition);
 
             // Debug the distance and cross-product results
-            Debug.Log($"Distance: {distance}");
+            //Debug.Log($"Distance: {distance}");
 
             // Apply the force along the X-axis using the distance
             if (distance * 1000 > 170 || distance * 1000 < -170)

@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 54e251ee4ec774c4991d8d3be2235d5f, type: 3}
-  m_Name: '#08 Wartortle'
+  m_Name: '#05 Charmeleon'
   m_EditorClassIdentifier: 
-  id: 8
-  pokeName: Wartortle
-  type: 4
-  sprite: {fileID: 0}
-  max_HP: 113
-  max_CP: 1533
-  ave_weight: 22.5
-  ave_height: 1
+  id: 5
+  pokeName: Charmeleon
+  type: 2
+  sprite: {fileID: 21300000, guid: b173171231080664f88ff4cc2d249c35, type: 3}
+  max_HP: 111
+  max_CP: 1718
+  ave_weight: 19
+  ave_height: 1.1
   level: {x: 16, y: 35}
   evolutionStage: 2
   evolutions:
-  - {fileID: 11400000, guid: 9a6e821cf47fd7f42a0aa4281200dd14, type: 2}
+  - {fileID: 11400000, guid: 553b6f7bb9c4b8540b023e38c51fce88, type: 2}
   - {fileID: 11400000}
-  - {fileID: 11400000, guid: adac8576e79baa147b9587c745eff957, type: 2}
+  - {fileID: 11400000, guid: 11ec6e0d4760b6c4f9d5499233582e52, type: 2}
   baseCaptureRate: 0.1
   baseFleeRate: 0.07

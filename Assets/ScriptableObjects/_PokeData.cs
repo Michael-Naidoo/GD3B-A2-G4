@@ -1,9 +1,11 @@
 using Enums;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu]
 [Serializable]
+// Data on each base pokemon
 public class _PokeData : ScriptableObject
 {
     public int id;
@@ -22,3 +24,4 @@ public class _PokeData : ScriptableObject
     public float baseCaptureRate;
     public float baseFleeRate;
 }
+

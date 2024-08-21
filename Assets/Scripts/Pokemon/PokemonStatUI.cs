@@ -17,30 +17,33 @@ public class PokemonStatUI : MonoBehaviour
     public TextMeshProUGUI weight;
     public TextMeshProUGUI types;
     public TextMeshProUGUI height;
+    public TextMeshProUGUI dateCaught;
 
     /// <summary>
     /// This sets all the data on the UI
     /// </summary>
     /// <param name="currPokemon">The Pokemon to display on the stats</param>
     /// 
-    public void DisplayData(Pokemon currPokemon)
+    public void DisplayData(PokeStats currPokemon)
     {
-        CPValue.text = $"CP {currPokemon.currStats.CP}";
+        CPValue.text = $"CP {currPokemon.CP}";
 
-        CPScale.maxValue = currPokemon.base_pokedata.max_CP;
-        CPScale.value = currPokemon.currStats.CP;
+        CPScale.maxValue = currPokemon.maxCP;
+        CPScale.value = currPokemon.CP;
 
-        pokemonSprite.sprite = currPokemon.base_pokedata.sprite;
+        pokemonSprite.sprite = currPokemon.sprite;
 
-        pokemonName.text = currPokemon.base_pokedata.name;
+        pokemonName.text = currPokemon.pokemonName;
 
-        HPScale.maxValue = currPokemon.currStats.HP;
-        HPScale.value = currPokemon.currStats.HP;
+        HPScale.maxValue = currPokemon.HP;
+        HPScale.value = currPokemon.HP;
 
-        weight.text = currPokemon.currStats.weight.ToString("0.00") + "kg";
+        weight.text = currPokemon.weight.ToString("0.00") + "kg";
 
-        types.text = currPokemon.currStats.type.ToString();
+        types.text = currPokemon.type.ToString();
 
-        height.text = currPokemon.currStats.height.ToString("0.00") + "m";
+        height.text = currPokemon.height.ToString("0.00") + "m";
+
+        dateCaught.text = currPokemon.dateCaught;
     }
 }

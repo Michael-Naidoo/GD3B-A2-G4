@@ -34,7 +34,11 @@ public class PlayerInput : MonoBehaviour
         {
             // Game Manager transfer data over to other scene
             GameManager.Instance.pokeData = hit.transform.GetComponent<WildPokemon>().pokeData;
-            Debug.Log("HIT POKEMON");
+
+            // play little cut scene
+            // go to next scene
+            GameManager.Instance.SwitchStates(GameManager.Instance.catchState);
+            
         }
         else if (Physics.Raycast(ray, out hit, 100, groundLayer))
         {

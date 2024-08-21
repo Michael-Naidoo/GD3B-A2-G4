@@ -7,7 +7,7 @@ public class PokeObstacleSpawner : MonoBehaviour
 {
     public static PokeObstacleSpawner Instance { get; private set; }
 
-    private GridSpawner gridSpawner;
+    [HideInInspector] public GridSpawner gridSpawner;
 
     [Header("Pokemon")]
     public GameObject p_pokemon;        //pokemon prefab
@@ -21,16 +21,17 @@ public class PokeObstacleSpawner : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        gridSpawner = GetComponent<GridSpawner>();
     }
 
     private void Start()
     {
-        gridSpawner = GetComponent<GridSpawner>();
 
         gridSpawner.GenerateGrid();
+        PokemonSpawn();
         //PokemonSpawn();
 
-        SpawnObstacles();
+        //SpawnObstacles();
     }
 
     public void PokemonSpawn()
@@ -38,6 +39,11 @@ public class PokeObstacleSpawner : MonoBehaviour
         int randNum = Random.Range(0, gridSpawner.points.Length);
 
         GameObject pokemon = Instantiate(p_pokemon, gridSpawner.points[randNum].position, Quaternion.identity, pokemonParent);
+
+        //pokemon.GetComponent<PokemonLogic>().pokemon.base_pokedata = GameManager.Instance.pokeData;
+        //pokemon.GetComponent<PokemonLogic>().pokemon.CalcCurrStats();
+
+
         pokemon.transform.position += new Vector3(0, 1, 0);
         
     }

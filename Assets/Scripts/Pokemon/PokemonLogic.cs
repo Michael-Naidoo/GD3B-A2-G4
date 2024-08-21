@@ -19,9 +19,7 @@ public class PokemonLogic : MonoBehaviour
     {
         pokemonHitCircles = GetComponent<PokemonHitCircles>();
 
-        _PokeData[] allPokemon = Resources.LoadAll<_PokeData>("Pokemon");
-
-        pokemon.base_pokedata = allPokemon[Random.Range(0, allPokemon.Length)];
+        pokemon.base_pokedata = GameManager.Instance.pokeData;
         pokemon.CalcCurrStats();
 
         //dataPanel.GetComponent<PokemonStatUI>().DisplayData(pokemon);

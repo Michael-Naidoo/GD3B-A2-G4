@@ -77,11 +77,12 @@ public class CatchState : BaseGameState
     public override void EnterState(GameManager manager)
     {
         // select random pokemon for player to catch
-        PokeObstacleSpawner.Instance.PokemonSpawn();
+
     }
 
     public override void ExitState(GameManager manager)
     {
+        SceneManager.LoadScene("WalkScene");
     }
 
     public override void UpdateState(GameManager manager)
@@ -98,7 +99,8 @@ public class WalkState : BaseGameState
 
     public override void ExitState(GameManager manager)
     {
-        
+        //store needed data here
+        SceneManager.LoadScene("CatchScene");
     }
 
     public override void UpdateState(GameManager manager)

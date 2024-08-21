@@ -788,23 +788,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1227049680}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 54128db6d6649d74baf58807aa92953b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedPokemon:
-    id: 0
-    pokemonName: Tester
-    sprite: {fileID: 0}
-    type: 0
-    HP: 0
-    CP: 0
-    maxCP: 0
-    weight: 0
-    height: 0
-    level: 0
-    dateCaught: 
+  pokeData: {fileID: 0}
 --- !u!1 &1572842421
 GameObject:
   m_ObjectHideFlags: 0

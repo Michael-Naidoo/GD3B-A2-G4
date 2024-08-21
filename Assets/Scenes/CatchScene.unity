@@ -197,10 +197,10 @@ MonoBehaviour:
   pointA: {x: 0, y: 0}
   pointB: {x: 0, y: 0}
   pointC: {x: 0, y: 0}
-  curveMultiplier: 0
-  forceMultiplierX: 10
-  forceMultiplierY: -2
-  forwardForce: 7.5
+  curveMultiplier: 1
+  forceMultiplierX: 1
+  forceMultiplierY: 1
+  forwardForce: 5
   holdTimer: 5
   holdTimerMax: 10
   nodeSpawnTimer: 1

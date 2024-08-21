@@ -19,7 +19,7 @@ public class TouchRecognition : MonoBehaviour
 
     public float curveMultiplier;
 
-    private Vector3 previousPosition;
+    private Vector3 startPosition;
     
     private Rigidbody rb;
     private Vector3 moveDirection;
@@ -31,6 +31,7 @@ public class TouchRecognition : MonoBehaviour
     public int nodeSpawnTimer;
     public int nodeSpawnTimerMax;
     private bool beingHeld = false;
+    private bool touchStart = false;
 
     private void Start()
     {
@@ -45,13 +46,19 @@ public class TouchRecognition : MonoBehaviour
             Touch touch = Input.GetTouch(0);
             Vector3 touchPosition = Camera.main.ScreenToWorldPoint(new Vector3(touch.position.x, touch.position.y, Camera.main.WorldToScreenPoint(transform.position).z));
             touchPosition.z = 0; // Maintain the object's Z position
-            previousPosition = transform.position;
+            if (!touchStart)
+            {
+                startPosition = transform.position;
+                touchStart = true;
+            }
             transform.position = touchPosition;
             rb.velocity = Vector3.zero;
+            rb.rotation = Quaternion.identity;
+            rb.angularVelocity = Vector3.zero;
             beingHeld = true;
             if (holdTimer == 0)
             {
-                moveDirection = previousPosition - transform.position;
+                moveDirection = transform.position - startPosition;
                 holdTimer = holdTimerMax;
             }
 
@@ -64,15 +71,17 @@ public class TouchRecognition : MonoBehaviour
 
             holdTimer--;
             nodeSpawnTimer--;
+            Debug.DrawRay(transform.position, new Vector3(0, 0, forwardForce) + new Vector3(moveDirection.x * forceMultiplierX, 0, 0) + new Vector3(0, moveDirection.y * forceMultiplierY), Color.red);
         }
         else if (Input.touchCount == 0)
         {
+            touchStart = false;
             if (beingHeld)
             {
-                rb.AddForce(new Vector3(0, 0, forwardForce) + new Vector3(moveDirection.normalized.x * forceMultiplierX, 0, 0) + new Vector3(0, moveDirection.normalized.y * forceMultiplierY), ForceMode.Impulse);
+                rb.AddForce(new Vector3(0, 0, forwardForce) + new Vector3(0, moveDirection.y * forceMultiplierY), ForceMode.Impulse);
             }
 
-            float distance = PerpendicularDistance(pointA, pointB, previousPosition);
+            float distance = PerpendicularDistance(pointA, pointB, startPosition);
 
             // Debug the distance and cross-product results
             //Debug.Log($"Distance: {distance}");

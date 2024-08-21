@@ -197,7 +197,7 @@ MonoBehaviour:
   pointA: {x: 0, y: 0}
   pointB: {x: 0, y: 0}
   pointC: {x: 0, y: 0}
-  curveMultiplier: 0
+  curveMultiplier: -20
   forceMultiplierX: 10
   forceMultiplierY: 0
   forwardForce: 5

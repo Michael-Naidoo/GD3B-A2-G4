@@ -68,7 +68,7 @@ public class TouchRecognition : MonoBehaviour
         {
             if (beingHeld)
             {
-                rb.AddForce((moveDirection.normalized + new Vector3(0, 0, -forwardForce)) * forceMultiplier * -1, ForceMode.Impulse);
+                rb.AddForce((moveDirection.normalized + new Vector3(0, 0, forwardForce * forceMultiplier)), ForceMode.Impulse);
             }
 
             float distance = PerpendicularDistance(pointA, pointB, previousPosition);

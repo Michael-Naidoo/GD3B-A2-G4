@@ -707,7 +707,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1227049681}
-  - component: {fileID: 1227049682}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -742,6 +741,7 @@ GameObject:
   - component: {fileID: 1503149915}
   - component: {fileID: 1503149914}
   - component: {fileID: 1503149913}
+  - component: {fileID: 1503149916}
   m_Layer: 0
   m_Name: GUI
   m_TagString: Untagged
@@ -835,6 +835,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1503149911}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1503149916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1503149911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6029fc21455cf346a6eb7ef978378e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pokeball: {fileID: 420591450}
+  pokeballState: 0
 --- !u!1 &1572842421
 GameObject:
   m_ObjectHideFlags: 0
@@ -1060,6 +1074,7 @@ MonoBehaviour:
   weight: {fileID: 1664165012}
   types: {fileID: 1323870570}
   height: {fileID: 824959138}
+  dateCaught: {fileID: 0}
 --- !u!1 &1908911832
 GameObject:
   m_ObjectHideFlags: 0
@@ -1123,7 +1138,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1889844264}
   m_Father: {fileID: 1692884659}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

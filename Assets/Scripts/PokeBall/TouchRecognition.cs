@@ -23,7 +23,8 @@ public class TouchRecognition : MonoBehaviour
     
     private Rigidbody rb;
     private Vector3 moveDirection;
-    public float forceMultiplier;
+    public float forceMultiplierX;
+    public float forceMultiplierY;
     public float forwardForce;
     public int holdTimer;
     public int holdTimerMax;
@@ -68,7 +69,7 @@ public class TouchRecognition : MonoBehaviour
         {
             if (beingHeld)
             {
-                rb.AddForce((moveDirection.normalized + new Vector3(0, 0, forwardForce * forceMultiplier)), ForceMode.Impulse);
+                rb.AddForce(new Vector3(0, 0, forwardForce) + new Vector3(moveDirection.normalized.x * forceMultiplierX, 0, 0) + new Vector3(0, moveDirection.normalized.y * forceMultiplierY), ForceMode.Impulse);
             }
 
             float distance = PerpendicularDistance(pointA, pointB, previousPosition);

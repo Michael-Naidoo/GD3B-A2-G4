@@ -199,7 +199,7 @@ MonoBehaviour:
   pointC: {x: 0, y: 0}
   curveMultiplier: -20
   forceMultiplierX: 10
-  forceMultiplierY: 0
+  forceMultiplierY: 1
   forwardForce: 5
   holdTimer: 5
   holdTimerMax: 10

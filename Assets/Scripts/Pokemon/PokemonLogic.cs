@@ -26,6 +26,13 @@ public class PokemonLogic : MonoBehaviour
         GUI.sprite = pokemon.base_pokedata.sprite;
     }
 
+    private void OnDestroy()
+    {
+        GameManager.Instance.SwitchStates(GameManager.Instance.walkState);
+        Destroy(gameObject);
+        Debug.Log("POKEMON DESTROYED");
+    }
+
     public void CatchPokemon(PokeballData pokeball, PokemonHitCircles hitCircles)
     {
         float multiplier = Multiplier(pokeball, hitCircles);
@@ -44,7 +51,7 @@ public class PokemonLogic : MonoBehaviour
             pokemon.StorePokemon();
             playerPokemon.player_pokemon.Add(pokemon.currStats);
 
-            Destroy(gameObject);
+            Destroy(this);
         }
         else
         {

@@ -36,11 +36,6 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         currentState.UpdateState(this);
-
-        if (Input.GetKeyUp(KeyCode.Escape))
-        {
-            DebugSceneChange();
-        }
     }
 
     public void SwitchStates(BaseGameState state)
@@ -82,7 +77,7 @@ public class CatchState : BaseGameState
 
     public override void ExitState(GameManager manager)
     {
-        SceneManager.LoadScene("WalkScene");
+        //SceneManager.LoadScene("WalkScene");
     }
 
     public override void UpdateState(GameManager manager)
@@ -94,7 +89,7 @@ public class WalkState : BaseGameState
 {
     public override void EnterState(GameManager manager)
     {
-        //spawn at same position
+        SceneManager.LoadScene("WalkScene");
     }
 
     public override void ExitState(GameManager manager)

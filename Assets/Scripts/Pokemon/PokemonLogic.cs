@@ -21,6 +21,7 @@ public class PokemonLogic : MonoBehaviour
 
         pokemon.base_pokedata = GameManager.Instance.pokeData;
         pokemon.CalcCurrStats();
+        pokemonHitCircles.PrepareHitCircles();
 
         //dataPanel.GetComponent<PokemonStatUI>().DisplayData(pokemon);
         GUI.sprite = pokemon.base_pokedata.sprite;
@@ -45,13 +46,15 @@ public class PokemonLogic : MonoBehaviour
         if(randNum <= probability)
         {
             //pokemon caught!
-            Debug.Log("Pokemon Caught");
 
             _Pokemon playerPokemon = Resources.Load<_Pokemon>("PlayerPokemon");
-            pokemon.StorePokemon();
+            pokemon.AddCatchDate();
             playerPokemon.player_pokemon.Add(pokemon.currStats);
 
-            Destroy(this);
+            Debug.Log("Pokemon Caught");
+            GameManager.Instance.SwitchStates(GameManager.Instance.walkState);
+
+            //Destroy(this);
         }
         else
         {

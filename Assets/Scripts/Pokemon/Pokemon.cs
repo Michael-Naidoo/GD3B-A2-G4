@@ -37,7 +37,7 @@ public class Pokemon
 
         heightScale = heightScales[base_pokedata.evolutionStage-1];
     }
-    public void StorePokemon() => currStats.dateCaught = DateTime.UtcNow.ToString("d");
+    public void AddCatchDate() => currStats.dateCaught = DateTime.UtcNow.ToString("d");
 
 }
 

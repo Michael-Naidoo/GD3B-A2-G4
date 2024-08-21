@@ -25,7 +25,7 @@ public class PokemonHitCircles : MonoBehaviour
     }
     private void Start()
     {
-        PrepareHitCircles();
+        //PrepareHitCircles();
     }
 
     private void Update()

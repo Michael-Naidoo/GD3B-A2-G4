@@ -2146,12 +2146,12 @@ MonoBehaviour:
   p_wildPokemon: {fileID: 5359341692826268888, guid: 13741b300aab38146bce10ae54e6fbd8, type: 3}
   wildPokemon_parent: {fileID: 987244380}
   activePokemon: []
-  max_activePokemon: 10
+  max_activePokemon: 25
   despawnTimerRange: {x: 15, y: 30}
   spawnRadius: 10
   spawnTime: 5
   currTime: 0
-  pokemonEachSpawnWave: 2
+  pokemonEachSpawnWave: 10
 --- !u!1 &1925443691
 GameObject:
   m_ObjectHideFlags: 0

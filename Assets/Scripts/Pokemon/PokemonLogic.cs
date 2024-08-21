@@ -7,6 +7,7 @@ using UnityEngine;
 public class PokemonLogic : MonoBehaviour
 {
     private PokemonHitCircles pokemonHitCircles;
+    [SerializeField] private _Pokemon playerPokemon;
 
     public Pokemon pokemon;
     public SpriteRenderer GUI;
@@ -47,7 +48,9 @@ public class PokemonLogic : MonoBehaviour
         {
             //pokemon caught!
 
-            _Pokemon playerPokemon = Resources.Load<_Pokemon>("PlayerPokemon");
+            //_Pokemon playerPokemon = Resources.Load<_Pokemon>("PlayerPokemon");
+
+            //Debug.Log(playerPokemon);
             pokemon.AddCatchDate();
             playerPokemon.player_pokemon.Add(pokemon.currStats);
 

@@ -101,49 +101,4 @@ public class GridSpawner : MonoBehaviour
 
     #endregion
 
-    #region Sheep Spawning
-
-    //public void AddSheep(int num)
-    //{
-    //    for (int i = 0; i < num; i++)
-    //    {
-    //        GameObject sheep = Instantiate(p_pokemon, pokemonParent);
-    //        SpriteManager.Instance.SpriteUpdate(sheep);
-    //        BoidsManager.Instance.boids.Add(sheep);
-
-    //        List<GameObject> newSheep = activeSheep.ToList();
-    //        newSheep.Add(sheep);
-    //        activeSheep = newSheep.ToArray();
-    //    }
-
-    //    // SpawnSheepHerd();
-
-    //}
-    //public void SpawnSheepHerd()
-    //{
-
-    //    spawnedSheep = new bool[sheepSpawnPoints.Count];
-
-    //    foreach (GameObject sheep in activeSheep)
-    //    {
-    //        FindPos(sheep);
-    //    }
-
-    //}
-    //private bool FindPos(GameObject sheep)
-    //{
-    //    int x = Random.Range(0, points.Length - 1);
-    //    if (!spawnedSheep[x])
-    //    {
-    //        sheep.transform.position = points[x].position;
-    //        spawnedSheep[x] = true;
-    //        return true;
-    //    }
-    //    else
-    //    {
-    //        return FindPos(sheep);
-    //    }
-    //}
-
-    #endregion
 }

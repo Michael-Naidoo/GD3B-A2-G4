@@ -26,6 +26,7 @@ public class Pokemon
         currStats.type = base_pokedata.type;
         currStats.HP = UnityEngine.Random.Range(0, base_pokedata.max_HP + 1);
         currStats.CP = UnityEngine.Random.Range(0, base_pokedata.max_CP + 1);
+        currStats.maxCP = base_pokedata.max_CP;
 
         currStats.weight = UnityEngine.Random.Range(base_pokedata.ave_weight * 0.75f, base_pokedata.ave_weight * 1.25f);
         currStats.height = UnityEngine.Random.Range(base_pokedata.ave_height * 0.75f, base_pokedata.ave_height * 1.25f);
@@ -34,7 +35,7 @@ public class Pokemon
 
         currStats.dateCaught = "";
 
-        heightScale = heightScales[base_pokedata.evolutionStage];
+        heightScale = heightScales[base_pokedata.evolutionStage-1];
     }
     public void StorePokemon() => currStats.dateCaught = DateTime.UtcNow.ToString("d");
 
@@ -52,6 +53,7 @@ public struct PokeStats
 
     public int HP;
     public int CP;
+    public int maxCP;
 
     public float weight;
     public float height;

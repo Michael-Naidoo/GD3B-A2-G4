@@ -19,9 +19,7 @@ public class PokemonLogic : MonoBehaviour
     {
         pokemonHitCircles = GetComponent<PokemonHitCircles>();
 
-        _PokeData[] allPokemon = Resources.LoadAll<_PokeData>("Pokemon");
-
-        pokemon.base_pokedata = allPokemon[Random.Range(0, allPokemon.Length)];
+        pokemon.base_pokedata = GameManager.Instance.pokeData;
         pokemon.CalcCurrStats();
 
         //dataPanel.GetComponent<PokemonStatUI>().DisplayData(pokemon);
@@ -60,7 +58,7 @@ public class PokemonLogic : MonoBehaviour
     /// </summary>
     /// <param name="multipliers">extra multiplie based on the ball, throw or berries eaten</param>
     /// <returns></returns>
-    private float CatchProbability(float multipliers)
+    public float CatchProbability(float multipliers)
     {
         float failChance_preMult, failChance, probability;
 
@@ -68,7 +66,7 @@ public class PokemonLogic : MonoBehaviour
         failChance = Mathf.Pow(failChance_preMult, multipliers);
         probability = 1 - failChance;
 
-        Debug.Log("Prob: " + probability + "  " + "Radius: " + pokemonHitCircles.maxCircle.transform.localScale.x + " vs " + pokemonHitCircles.critCircle.transform.localScale.x);
+        //Debug.Log("Prob: " + probability + "  " + "Radius: " + pokemonHitCircles.maxCircle.transform.localScale.x + " vs " + pokemonHitCircles.critCircle.transform.localScale.x);
 
 
         return probability;
@@ -80,7 +78,7 @@ public class PokemonLogic : MonoBehaviour
     /// <param name="pokeball">the pokeball that hit the pokemon</param>
     /// <param name="hitCircles">the hit circles of the current pokemon</param>
     /// <returns></returns>
-    private float Multiplier(PokeballData pokeball, PokemonHitCircles hitCircles)
+    public float Multiplier(PokeballData pokeball, PokemonHitCircles hitCircles)
     {
         float ball, curve, berry, throwCalc;
 
@@ -93,6 +91,22 @@ public class PokemonLogic : MonoBehaviour
         throwCalc = 1 + (hitCircles.critCircle.transform.localScale.x / hitCircles.maxCircle.transform.localScale.x);
 
         Debug.Log("Mult: " + ball * curve * berry * throwCalc);
+
+        return ball * curve * berry * throwCalc;
+    }
+    public float Multiplier(PokeballData pokeball)
+    {
+        float ball, curve, berry, throwCalc;
+
+        ball = (float)pokeball.pokeball_type / 10;
+
+        //Debug.Log("Ball: " + ball);
+
+        curve = pokeball.curveBall ? 1.7f : 1f;
+        berry = (float)BerryEffect / 10;
+        throwCalc = 1.5f;
+
+        //Debug.Log("Mult: " + ball * curve * berry * throwCalc);
 
         return ball * curve * berry * throwCalc;
     }

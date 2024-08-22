@@ -10,12 +10,12 @@ public class ParentCircle : MonoBehaviour
     {
         if (hitCircle.critTrigger_enter)
         {
-            Debug.Log("CRIT HIT");
+            //Debug.Log("CRIT HIT");
             hitCircle.pokemonLogic.critHit = true;
         }
         else
         {
-            Debug.Log("Hit");
+            //Debug.Log("Hit");
             hitCircle.pokemonLogic.critHit = false;
         }
 
@@ -26,21 +26,11 @@ public class ParentCircle : MonoBehaviour
             hitCircle.pokemonLogic.pokemon.AddCatchDate();
             hitCircle.pokemonLogic.playerPokemon.player_pokemon.Add(hitCircle.pokemonLogic.pokemon.currStats);
 
-            StartCoroutine(CatchManager.Instance.Capture());
-            //queue coroutines here
-            // pokemon into ball
-            // amount of ticks
-            // stays in!
-            // swaps scenes
+            CatchManager.Instance.CatchSuccess();
         }
         else
         {
-            StartCoroutine(CatchManager.Instance.Capture());
-
-            //queue coroutines here
-            // pokemon into ball
-            // amount of ticks (1-2)
-            // jumps out
+            CatchManager.Instance.CatchFail();
         }
     }
 }

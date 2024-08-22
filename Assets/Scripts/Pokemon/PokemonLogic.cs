@@ -24,7 +24,8 @@ public class PokemonLogic : MonoBehaviour
         pokemon.base_pokedata = GameManager.Instance.pokeData;
         pokemon.CalcCurrStats();
         pokemonHitCircles.PrepareHitCircles();
-        CatchManager.Instance.pokemon = transform.GetChild(0).gameObject;
+        CatchManager.Instance.pokemon_GUI = transform.GetChild(0).gameObject;
+        CatchManager.Instance.pokemon = gameObject;
 
         //dataPanel.GetComponent<PokemonStatUI>().DisplayData(pokemon);
         GUI.sprite = pokemon.base_pokedata.sprite;
@@ -44,18 +45,18 @@ public class PokemonLogic : MonoBehaviour
 
         float randNum = Random.Range(0, 1f);
 
-        Debug.Log("Rand Num: "+ randNum);
+        //Debug.Log("Rand Num: "+ randNum);
 
         if(randNum <= probability)
         {
-            Debug.Log("Pokemon Caught");
+            //Debug.Log("Pokemon Caught");
             //GameManager.Instance.SwitchStates(GameManager.Instance.walkState);
             return true;
         }
         else
         {
             //choose random tick (0-2)
-            Debug.Log("Failed...");
+            //Debug.Log("Failed...");
             return false;
         }
     }
@@ -91,7 +92,7 @@ public class PokemonLogic : MonoBehaviour
 
         ball = (float)pokeball.pokeball_type / 10;
 
-        Debug.Log("Ball: " + ball);
+        //Debug.Log("Ball: " + ball);
 
         curve = pokeball.curveBall ? 1.7f : 1f;
         berry = (float)BerryEffect / 10;
@@ -99,7 +100,7 @@ public class PokemonLogic : MonoBehaviour
         throwCalc = 1 + (hitCircles.critCircle.transform.localScale.x / hitCircles.maxCircle.transform.localScale.x);
         throwCalc *= crit;
 
-        Debug.Log("Mult: " + ball * curve * berry * throwCalc);
+        //Debug.Log("Mult: " + ball * curve * berry * throwCalc);
 
         return ball * curve * berry * throwCalc;
     }

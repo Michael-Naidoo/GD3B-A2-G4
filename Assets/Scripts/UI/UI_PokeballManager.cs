@@ -1,59 +1,59 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UI_PokeballManager : MonoBehaviour
 {
-    public UI_Pokeball[] pokeball_buttons = new UI_Pokeball[3];
-    public UI_Pokeball current_pokeball;
-
-    public Dictionary<PokeBallTypes, Sprite> pokeball_sprites = new Dictionary<PokeBallTypes, Sprite>();
-
     public bool isOpen;
+    public TouchRecognition pokeball;
+    public PokeBallTypes currentPokeball;
+    [SerializeField] private Sprite[] pokeball_sprites;
+    [SerializeField] private Material[] pokeball_materials;
 
-    public Animator animator;
+    [SerializeField] private GameObject pokeball_GUI;
+    [SerializeField] private Image currentPokeball_icon;
+    [SerializeField] private Animator animator;
 
     private void Start()
     {
-        pokeball_sprites.Add(PokeBallTypes.Pokeball, pokeball_buttons[0].image.sprite);
-        pokeball_sprites.Add(PokeBallTypes.Greatball, pokeball_buttons[1].image.sprite);
-        pokeball_sprites.Add(PokeBallTypes.UltraBall, pokeball_buttons[2].image.sprite);
+        SetPokeballType(PokeBallTypes.Pokeball);
     }
 
-    public void SelectPokeball(UI_Pokeball selected_pokeball)
+    public void OpenCloseUI()
     {
-        current_pokeball.isCurrentBall = false;
-
-        for (int i = 0; i < pokeball_buttons.Length; i++)
+        if (isOpen)
         {
-            if (pokeball_buttons[i] == selected_pokeball)
-            {
-                for (int j = 0; j < pokeball_buttons.Length; j++)
-                {
-                    if (pokeball_buttons[j] == current_pokeball)
-                    {
-                        UI_Pokeball temp = pokeball_buttons[j];
-                        pokeball_buttons[j] = pokeball_buttons[i];
-                        pokeball_buttons[i] = temp;
-                    }
-                }
-            }
+            animator.SetBool("isOpen", false);
+            isOpen = false;
         }
-
-        current_pokeball = selected_pokeball;
-
-        current_pokeball.isCurrentBall = true;
-
-        foreach (UI_Pokeball uI_Pokeball in pokeball_buttons)
+        else
         {
-            uI_Pokeball.image.sprite = pokeball_sprites[uI_Pokeball.pokeball_type];
+            animator.SetBool("isOpen", true);
+            isOpen = true;
         }
+    }
 
-        for (int i = 0; i < pokeball_buttons.Length; ++i)
+    public void SetPokeballType(PokeBallTypes newType)
+    {
+        currentPokeball = newType;
+        pokeball.PokeballData.pokeball_type = newType;
+
+        switch (newType)
         {
-            transform.GetChild(2-i).GetComponent<UI_Pokeball>().image.sprite = pokeball_buttons[i].image.sprite;
-
+            case PokeBallTypes.Pokeball:
+                currentPokeball_icon.sprite = pokeball_sprites[0];
+                pokeball_GUI.GetComponent<MeshRenderer>().material = pokeball_materials[0];
+                break;
+            case PokeBallTypes.Greatball:
+                currentPokeball_icon.sprite = pokeball_sprites[1];
+                pokeball_GUI.GetComponent<MeshRenderer>().material = pokeball_materials[1];
+                break;
+            case PokeBallTypes.UltraBall:
+                currentPokeball_icon.sprite = pokeball_sprites[2];
+                pokeball_GUI.GetComponent<MeshRenderer>().material = pokeball_materials[2];
+                break;
         }
-
+        //change GUI
     }
 }

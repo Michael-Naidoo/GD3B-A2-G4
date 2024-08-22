@@ -123,6 +123,9 @@ MonoBehaviour:
   CPMultLevels: {fileID: 11400000, guid: c27307cfea64fef4ca03263975e5882e, type: 2}
   dataPanel: {fileID: 0}
   BerryEffect: 10
+  critHit: 0
+  GUI_pos: {x: 0, y: 0, z: 0}
+  guiLogic: {fileID: 8725106391946411668}
 --- !u!114 &4351008335563994602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -297,6 +300,7 @@ MonoBehaviour:
   ground:
     serializedVersion: 2
     m_Bits: 8
+  pokemonLogic: {fileID: 6384054538859631707}
 --- !u!1 &4442017496545797840
 GameObject:
   m_ObjectHideFlags: 0

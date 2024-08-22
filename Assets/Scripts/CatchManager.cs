@@ -88,13 +88,13 @@ public class CatchManager : MonoBehaviour
 
         while (true)
         {
-            pokemon_GUI.transform.position = Vector3.Lerp(pokemon_GUI.transform.position, pokemon.transform.position, 0.05f);
+            pokemon_GUI.transform.position = Vector3.Lerp(pokemon_GUI.transform.position, pokemon.GetComponent<PokemonLogic>().GUI_pos, 0.05f);
             pokemon_GUI.transform.localScale = Vector3.Lerp(pokemon_GUI.transform.localScale, Vector3.one, 0.05f);
 
-            if (Vector3.Distance(pokemon_GUI.transform.position, pokemon.transform.position) <= 0.01)
+            if (Vector3.Distance(pokemon_GUI.transform.position, pokemon.GetComponent<PokemonLogic>().GUI_pos) <= 0.01)
             {
                 Debug.Log("Finished Escape");
-                pokemon_GUI.transform.position = pokemon.transform.position;
+                pokemon_GUI.transform.position = pokemon.GetComponent<PokemonLogic>().GUI_pos;
                 pokemon_GUI.transform.localScale = Vector3.one;
                 break;
             }

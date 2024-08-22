@@ -16,6 +16,8 @@ public class PokemonLogic : MonoBehaviour
     public GameObject dataPanel;    //testing
     public BerryTypes BerryEffect;
     public bool critHit = false;
+    public Vector3 GUI_pos;
+    public PokeGUI guiLogic;
 
     private void Start()
     {
@@ -29,6 +31,7 @@ public class PokemonLogic : MonoBehaviour
 
         //dataPanel.GetComponent<PokemonStatUI>().DisplayData(pokemon);
         GUI.sprite = pokemon.base_pokedata.sprite;
+        guiLogic.GetYPos();
     }
 
     private void OnDestroy()

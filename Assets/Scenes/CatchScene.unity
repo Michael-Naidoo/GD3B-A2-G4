@@ -928,6 +928,7 @@ GameObject:
   - component: {fileID: 1472420995}
   - component: {fileID: 1472420994}
   - component: {fileID: 1472420993}
+  - component: {fileID: 1472420997}
   m_Layer: 0
   m_Name: BerryButton
   m_TagString: Untagged
@@ -1013,7 +1014,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1472420995}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1472420997}
+        m_TargetAssemblyTypeName: UI_BerryButton, Assembly-CSharp
+        m_MethodName: SpawnBerry
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1472420995
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1052,6 +1065,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1472420991}
   m_CullTransparentMesh: 1
+--- !u!114 &1472420997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1472420991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0176ed84594ad234dbf5b792c669d671, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  p_berry: {fileID: 3164459217881578333, guid: 53964476289505347b89126b460ddcbc, type: 3}
+  parent: {fileID: 1908911833}
 --- !u!1 &1503149911
 GameObject:
   m_ObjectHideFlags: 0

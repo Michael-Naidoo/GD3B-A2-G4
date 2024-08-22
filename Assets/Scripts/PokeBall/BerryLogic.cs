@@ -16,6 +16,7 @@ public class BerryLogic : MonoBehaviour
     private void Update()
     {
         transform.position = Vector3.Lerp(transform.position, Pokemon.transform.position, Time.deltaTime * lerpSpeed);
+        transform.localScale = Vector3.Lerp(transform.localScale, Vector3.zero, Time.deltaTime * lerpSpeed);
 
         if (transform.position.z >= Pokemon.transform.position.z*0.8f)
         {

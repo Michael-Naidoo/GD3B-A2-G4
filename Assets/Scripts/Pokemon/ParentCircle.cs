@@ -19,6 +19,28 @@ public class ParentCircle : MonoBehaviour
             hitCircle.pokemonLogic.critHit = false;
         }
 
-        hitCircle.pokemonLogic.CatchPokemon(collision.gameObject.GetComponent<TouchRecognition>().PokeballData, hitCircle);
+        bool caught = hitCircle.pokemonLogic.CatchPokemon(collision.gameObject.GetComponent<TouchRecognition>().PokeballData, hitCircle);
+
+        if (caught)
+        {
+            hitCircle.pokemonLogic.pokemon.AddCatchDate();
+            hitCircle.pokemonLogic.playerPokemon.player_pokemon.Add(hitCircle.pokemonLogic.pokemon.currStats);
+
+            StartCoroutine(CatchManager.Instance.Capture());
+            //queue coroutines here
+            // pokemon into ball
+            // amount of ticks
+            // stays in!
+            // swaps scenes
+        }
+        else
+        {
+            StartCoroutine(CatchManager.Instance.Capture());
+
+            //queue coroutines here
+            // pokemon into ball
+            // amount of ticks (1-2)
+            // jumps out
+        }
     }
 }

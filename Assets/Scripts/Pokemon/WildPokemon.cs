@@ -8,6 +8,7 @@ public class WildPokemon : MonoBehaviour
     public _PokeData pokeData;
     [SerializeField] private GameObject GUI;
     [SerializeField] private LayerMask ground;
+    [SerializeField] private SphereCollider sphere_collider;
 
 
     public void SetGUI()
@@ -23,5 +24,6 @@ public class WildPokemon : MonoBehaviour
 
         float dif = distance - yPos;
         GUI.transform.transform.position = GUI.transform.position - new Vector3(0, dif + 0.25f, 0);
+        sphere_collider.radius = pokeData.evolutionStage/2;
     }
 }

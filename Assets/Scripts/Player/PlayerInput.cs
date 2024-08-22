@@ -13,7 +13,11 @@ public class PlayerInput : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            GetTargetPos(Input.mousePosition);
+            GetTargetPos_Tap(Input.mousePosition);
+        }
+        else if (Input.GetMouseButton(0))
+        {
+            GetTargetPos_Cont(Input.mousePosition);
         }
 
         if (Input.touchCount > 0)
@@ -22,11 +26,27 @@ public class PlayerInput : MonoBehaviour
 
             if (touch.phase == TouchPhase.Began)
             {
-                GetTargetPos(touch.position);
+                GetTargetPos_Tap(touch.position);
+            }
+            else if (touch.phase == TouchPhase.Stationary || touch.phase == TouchPhase.Moved)
+            {
+                GetTargetPos_Cont(touch.position);
             }
         }
     }
-    private void GetTargetPos(Vector2 pos)
+    private void GetTargetPos_Cont(Vector2 pos)
+    {
+        Ray ray = Camera.main.ScreenPointToRay(pos);
+        RaycastHit hit;
+
+        //check if it hits a pokemon then if it hits the ground 
+
+        if (Physics.Raycast(ray, out hit, 1000, groundLayer))
+        {
+            agent.SetDestination(hit.point);
+        }
+    }
+    private void GetTargetPos_Tap(Vector2 pos)
     {
         Ray ray = Camera.main.ScreenPointToRay(pos);
         RaycastHit hit;
@@ -42,10 +62,6 @@ public class PlayerInput : MonoBehaviour
             // go to next scene
             GameManager.Instance.SwitchStates(GameManager.Instance.catchState);
 
-        }
-        else if (Physics.Raycast(ray, out hit, 100, groundLayer))
-        {
-            agent.SetDestination(hit.point);
         }
     }
 

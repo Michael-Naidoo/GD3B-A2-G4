@@ -124,6 +124,7 @@ MonoBehaviour:
   ground:
     serializedVersion: 2
     m_Bits: 8
+  sphere_collider: {fileID: 857026902902091814}
 --- !u!1 &8687716690128946716
 GameObject:
   m_ObjectHideFlags: 0
@@ -202,7 +203,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 32086975782f31543978a4ffe5b43104, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

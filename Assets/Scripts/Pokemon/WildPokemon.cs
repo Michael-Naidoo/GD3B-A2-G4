@@ -24,6 +24,6 @@ public class WildPokemon : MonoBehaviour
 
         float dif = distance - yPos;
         GUI.transform.transform.position = GUI.transform.position - new Vector3(0, dif + 0.25f, 0);
-        sphere_collider.radius = pokeData.evolutionStage/2;
+        sphere_collider.radius = (float)pokeData.evolutionStage/2;
     }
 }

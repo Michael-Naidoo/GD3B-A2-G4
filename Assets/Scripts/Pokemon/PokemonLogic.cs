@@ -15,6 +15,7 @@ public class PokemonLogic : MonoBehaviour
     public _CPMultLevels CPMultLevels;
     public GameObject dataPanel;    //testing
     public BerryTypes BerryEffect;
+    public bool critHit = false;
 
     private void Start()
     {
@@ -46,18 +47,11 @@ public class PokemonLogic : MonoBehaviour
 
         if(randNum <= probability)
         {
-            //pokemon caught!
-
-            //_Pokemon playerPokemon = Resources.Load<_Pokemon>("PlayerPokemon");
-
-            //Debug.Log(playerPokemon);
             pokemon.AddCatchDate();
             playerPokemon.player_pokemon.Add(pokemon.currStats);
 
             Debug.Log("Pokemon Caught");
             GameManager.Instance.SwitchStates(GameManager.Instance.walkState);
-
-            //Destroy(this);
         }
         else
         {
@@ -93,7 +87,7 @@ public class PokemonLogic : MonoBehaviour
     /// <returns></returns>
     public float Multiplier(PokeballData pokeball, PokemonHitCircles hitCircles)
     {
-        float ball, curve, berry, throwCalc;
+        float ball, curve, berry, throwCalc, crit;
 
         ball = (float)pokeball.pokeball_type / 10;
 
@@ -101,7 +95,9 @@ public class PokemonLogic : MonoBehaviour
 
         curve = pokeball.curveBall ? 1.7f : 1f;
         berry = (float)BerryEffect / 10;
+        crit = critHit ? 2 : 1;
         throwCalc = 1 + (hitCircles.critCircle.transform.localScale.x / hitCircles.maxCircle.transform.localScale.x);
+        throwCalc *= crit;
 
         Debug.Log("Mult: " + ball * curve * berry * throwCalc);
 

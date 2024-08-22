@@ -11,22 +11,14 @@ public class ParentCircle : MonoBehaviour
         if (hitCircle.critTrigger_enter)
         {
             Debug.Log("CRIT HIT");
-            hitCircle.critCircle.GetComponent<SpriteRenderer>().color = Color.green;
-            StartCoroutine(ChangeColour());
+            hitCircle.pokemonLogic.critHit = true;
         }
         else
         {
             Debug.Log("Hit");
-            hitCircle.critCircle.GetComponent<SpriteRenderer>().color = Color.yellow;
-            StartCoroutine(ChangeColour());
+            hitCircle.pokemonLogic.critHit = false;
         }
 
         hitCircle.pokemonLogic.CatchPokemon(collision.gameObject.GetComponent<TouchRecognition>().PokeballData, hitCircle);
-    }
-
-    private IEnumerator ChangeColour()
-    {
-        yield return new WaitForSeconds(1);
-        hitCircle.critCircle.GetComponent<SpriteRenderer>().color = Color.red;
     }
 }

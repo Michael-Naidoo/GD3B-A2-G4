@@ -16,7 +16,7 @@ public class goesTransparent : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        myColor.a -= 0.004f;
+        myColor.a -= 0.03f;
         GetComponent<SpriteRenderer>().color = myColor;
         //Debug.Log (myColor.a);
     }

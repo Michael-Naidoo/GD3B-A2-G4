@@ -9,7 +9,7 @@ public class UI_BerryButton : MonoBehaviour
 
     public void SpawnBerry()
     {
-        Vector3 spawnPos = Camera.main.ScreenToWorldPoint(transform.position);
+        Vector3 spawnPos = Camera.main.ScreenToViewportPoint(transform.position);
         Instantiate(p_berry,spawnPos, Quaternion.identity, parent);
     }
 }

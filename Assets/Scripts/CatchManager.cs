@@ -47,6 +47,9 @@ public class CatchManager : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
 
+        pokemon_GUI.GetComponent<Animator>().Play("caught go up");
+        Instantiate(Resources.Load("Caught Object"), pokemon_GUI.transform);
+
         pokeball.GetComponent<Rigidbody>().velocity = Vector3.zero;
         pokeball.GetComponent<Rigidbody>().drag = 10;
 
@@ -71,6 +74,7 @@ public class CatchManager : MonoBehaviour
         for (int i = 0; i < numberOfTicks; i++)
         {
             // *********************************
+            pokemon_GUI.GetComponent<Animator>().Play("gotchua rotate");
             Debug.Log("Tick " + i);
             yield return new WaitForSeconds(animationDuration);
         }
@@ -78,6 +82,8 @@ public class CatchManager : MonoBehaviour
 
     private IEnumerator Success(float animaitonDuration)
     {
+        Instantiate(Resources.Load("gotchua Object"), pokemon_GUI.transform);
+        pokemon_GUI.GetComponent<Animator>().Play("default");
         // ****************************************************     play success animation here animation here        ********************************************
         yield return new WaitForSeconds(animaitonDuration);
         Debug.Log("Catch SUCCESSSSSSSSSS");
@@ -87,6 +93,8 @@ public class CatchManager : MonoBehaviour
 
         while (true)
         {
+            pokemon_GUI.GetComponent<Animator>().Play("caught go up");
+
             pokemon_GUI.transform.position = Vector3.Lerp(pokemon_GUI.transform.position, pokemon.GetComponent<PokemonLogic>().GUI_pos, 0.05f);
             pokemon_GUI.transform.localScale = Vector3.Lerp(pokemon_GUI.transform.localScale, Vector3.one, 0.05f);
 

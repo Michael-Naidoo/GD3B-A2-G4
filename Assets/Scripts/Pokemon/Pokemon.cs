@@ -20,7 +20,7 @@ public class Pokemon
     public void CalcCurrStats()
     {
         currStats.id = base_pokedata.id;
-        currStats.pokemonName = base_pokedata.name;
+        currStats.pokemonName = base_pokedata.pokeName;
         currStats.sprite = base_pokedata.sprite;
 
         currStats.type = base_pokedata.type;

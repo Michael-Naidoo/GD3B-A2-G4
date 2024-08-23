@@ -7,7 +7,7 @@ using UnityEngine;
 public class PokemonLogic : MonoBehaviour
 {
     private PokemonHitCircles pokemonHitCircles;
-    [SerializeField] private _Pokemon playerPokemon;
+    public _Pokemon playerPokemon;
 
     public Pokemon pokemon;
     public SpriteRenderer GUI;
@@ -15,6 +15,9 @@ public class PokemonLogic : MonoBehaviour
     public _CPMultLevels CPMultLevels;
     public GameObject dataPanel;    //testing
     public BerryTypes BerryEffect;
+    public bool critHit = false;
+    public Vector3 GUI_pos;
+    public PokeGUI guiLogic;
 
     private void Start()
     {
@@ -23,9 +26,12 @@ public class PokemonLogic : MonoBehaviour
         pokemon.base_pokedata = GameManager.Instance.pokeData;
         pokemon.CalcCurrStats();
         pokemonHitCircles.PrepareHitCircles();
+        CatchManager.Instance.pokemon_GUI = transform.GetChild(0).gameObject;
+        CatchManager.Instance.pokemon = gameObject;
 
         //dataPanel.GetComponent<PokemonStatUI>().DisplayData(pokemon);
         GUI.sprite = pokemon.base_pokedata.sprite;
+        guiLogic.GetYPos();
     }
 
     private void OnDestroy()
@@ -35,34 +41,26 @@ public class PokemonLogic : MonoBehaviour
         Debug.Log("POKEMON DESTROYED");
     }
 
-    public void CatchPokemon(PokeballData pokeball, PokemonHitCircles hitCircles)
+    public bool CatchPokemon(PokeballData pokeball, PokemonHitCircles hitCircles)
     {
         float multiplier = Multiplier(pokeball, hitCircles);
         float probability = CatchProbability(multiplier);
 
         float randNum = Random.Range(0, 1f);
 
-        Debug.Log("Rand Num: "+ randNum);
+        //Debug.Log("Rand Num: "+ randNum);
 
         if(randNum <= probability)
         {
-            //pokemon caught!
-
-            //_Pokemon playerPokemon = Resources.Load<_Pokemon>("PlayerPokemon");
-
-            //Debug.Log(playerPokemon);
-            pokemon.AddCatchDate();
-            playerPokemon.player_pokemon.Add(pokemon.currStats);
-
-            Debug.Log("Pokemon Caught");
-            GameManager.Instance.SwitchStates(GameManager.Instance.walkState);
-
-            //Destroy(this);
+            //Debug.Log("Pokemon Caught");
+            //GameManager.Instance.SwitchStates(GameManager.Instance.walkState);
+            return true;
         }
         else
         {
             //choose random tick (0-2)
-            Debug.Log("Failed...");
+            //Debug.Log("Failed...");
+            return false;
         }
     }
 
@@ -93,17 +91,19 @@ public class PokemonLogic : MonoBehaviour
     /// <returns></returns>
     public float Multiplier(PokeballData pokeball, PokemonHitCircles hitCircles)
     {
-        float ball, curve, berry, throwCalc;
+        float ball, curve, berry, throwCalc, crit;
 
         ball = (float)pokeball.pokeball_type / 10;
 
-        Debug.Log("Ball: " + ball);
+        //Debug.Log("Ball: " + ball);
 
         curve = pokeball.curveBall ? 1.7f : 1f;
         berry = (float)BerryEffect / 10;
+        crit = critHit ? 2 : 1;
         throwCalc = 1 + (hitCircles.critCircle.transform.localScale.x / hitCircles.maxCircle.transform.localScale.x);
+        throwCalc *= crit;
 
-        Debug.Log("Mult: " + ball * curve * berry * throwCalc);
+        //Debug.Log("Mult: " + ball * curve * berry * throwCalc);
 
         return ball * curve * berry * throwCalc;
     }

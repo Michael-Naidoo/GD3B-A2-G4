@@ -10,23 +10,27 @@ public class ParentCircle : MonoBehaviour
     {
         if (hitCircle.critTrigger_enter)
         {
-            Debug.Log("CRIT HIT");
-            hitCircle.critCircle.GetComponent<SpriteRenderer>().color = Color.green;
-            StartCoroutine(ChangeColour());
+            //Debug.Log("CRIT HIT");
+            hitCircle.pokemonLogic.critHit = true;
         }
         else
         {
-            Debug.Log("Hit");
-            hitCircle.critCircle.GetComponent<SpriteRenderer>().color = Color.yellow;
-            StartCoroutine(ChangeColour());
+            //Debug.Log("Hit");
+            hitCircle.pokemonLogic.critHit = false;
         }
 
-        hitCircle.pokemonLogic.CatchPokemon(collision.gameObject.GetComponent<TouchRecognition>().PokeballData, hitCircle);
-    }
+        bool caught = hitCircle.pokemonLogic.CatchPokemon(collision.gameObject.GetComponent<TouchRecognition>().PokeballData, hitCircle);
 
-    private IEnumerator ChangeColour()
-    {
-        yield return new WaitForSeconds(1);
-        hitCircle.critCircle.GetComponent<SpriteRenderer>().color = Color.red;
+        if (caught)
+        {
+            hitCircle.pokemonLogic.pokemon.AddCatchDate();
+            hitCircle.pokemonLogic.playerPokemon.player_pokemon.Add(hitCircle.pokemonLogic.pokemon.currStats);
+
+            CatchManager.Instance.CatchSuccess();
+        }
+        else
+        {
+            CatchManager.Instance.CatchFail();
+        }
     }
 }

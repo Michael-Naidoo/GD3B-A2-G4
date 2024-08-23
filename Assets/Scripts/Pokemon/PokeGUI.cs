@@ -6,11 +6,12 @@ public class PokeGUI : MonoBehaviour
 {
     [SerializeField] private Sprite sprite;
     [SerializeField] private LayerMask ground;
+    [SerializeField] private PokemonLogic pokemonLogic;
 
     /// <summary>
     /// Sets the GUI pos so that its not floating in the air
     /// </summary>
-    private void GetYPos()
+    public void GetYPos()
     {
         sprite = GetComponent<SpriteRenderer>().sprite;
 
@@ -25,6 +26,7 @@ public class PokeGUI : MonoBehaviour
 
         float dif = distance - yPos;
         transform.transform.position = transform.position - new Vector3(0, dif + 0.15f, 0);
-
+        
+        pokemonLogic.GUI_pos = transform.position;
     }
 }

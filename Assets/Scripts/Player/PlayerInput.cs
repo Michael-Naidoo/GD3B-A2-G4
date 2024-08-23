@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.EventSystems;
 
 public class PlayerInput : MonoBehaviour
 {
@@ -11,28 +12,43 @@ public class PlayerInput : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (!TouchUI())
         {
-            GetTargetPos_Tap(Input.mousePosition);
-        }
-        else if (Input.GetMouseButton(0))
-        {
-            GetTargetPos_Cont(Input.mousePosition);
-        }
+            if (Input.GetMouseButtonDown(0))
+            {
+                GetTargetPos_Tap(Input.mousePosition);
+            }
+            else if (Input.GetMouseButton(0))
+            {
+                GetTargetPos_Cont(Input.mousePosition);
+            }
 
+            if (Input.touchCount > 0)
+            {
+                Touch touch = Input.GetTouch(0);
+
+                if (touch.phase == TouchPhase.Began)
+                {
+                    GetTargetPos_Tap(touch.position);
+                }
+                else if (touch.phase == TouchPhase.Stationary || touch.phase == TouchPhase.Moved)
+                {
+                    GetTargetPos_Cont(touch.position);
+                }
+            }
+        }
+    }
+
+    private bool TouchUI()
+    {
         if (Input.touchCount > 0)
         {
-            Touch touch = Input.GetTouch(0);
+            int id = Input.GetTouch(0).fingerId;
 
-            if (touch.phase == TouchPhase.Began)
-            {
-                GetTargetPos_Tap(touch.position);
-            }
-            else if (touch.phase == TouchPhase.Stationary || touch.phase == TouchPhase.Moved)
-            {
-                GetTargetPos_Cont(touch.position);
-            }
+            return EventSystem.current.IsPointerOverGameObject(id);
         }
+
+        return false;
     }
     private void GetTargetPos_Cont(Vector2 pos)
     {

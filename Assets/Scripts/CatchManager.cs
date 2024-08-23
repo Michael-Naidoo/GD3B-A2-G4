@@ -70,7 +70,7 @@ public class CatchManager : MonoBehaviour
     {
         for (int i = 0; i < numberOfTicks; i++)
         {
-            // 
+            // *********************************
             Debug.Log("Tick " + i);
             yield return new WaitForSeconds(animationDuration);
         }

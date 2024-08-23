@@ -12,26 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7b0c63a3768146479509f5ab15c4053, type: 3}
   m_Name: PlayerPokemon
   m_EditorClassIdentifier: 
-  player_pokemon:
-  - id: 4
-    pokemonName: Charmander
-    sprite: {fileID: 21300000, guid: e392dfe862b24f14986e2fe1347912c6, type: 3}
-    type: 2
-    HP: 5
-    CP: 561
-    maxCP: 936
-    weight: 10.603241
-    height: 0.6098912
-    level: 12
-    dateCaught: 2024/08/22
-  - id: 2
-    pokemonName: Ivysaur
-    sprite: {fileID: 21300000, guid: 094be6771c3317043b54d7a1535885e7, type: 3}
-    type: 144
-    HP: 22
-    CP: 384
-    maxCP: 1797
-    weight: 12.37346
-    height: 0.92654157
-    level: 23
-    dateCaught: 2024/08/22
+  player_pokemon: []

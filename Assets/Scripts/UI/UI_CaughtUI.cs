@@ -19,4 +19,9 @@ public class UI_CaughtUI : MonoBehaviour
 
         caughtText.text = string.Join("", _text);
     }
+
+    public void WalkScene()
+    {
+        GameManager.Instance.SwitchStates(GameManager.Instance.walkState);
+    }
 }

@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
+using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -14,6 +14,10 @@ public class CatchManager : MonoBehaviour
     [Tooltip("GUI of pokeball")] public GameObject pokeball_GUI;
     [Tooltip("GUI of pokeball")] public Animator pokeball_animator;
     [Tooltip("GameObject of pokeball")] public GameObject pokeball;
+
+    public GameObject gotchaText;
+    public GameObject caughtUI;
+    public GameObject buttonsUI;
 
     public GameObject gotchaPrefab;
 
@@ -35,6 +39,8 @@ public class CatchManager : MonoBehaviour
         animationQueue.Enqueue(Capture());
         animationQueue.Enqueue(Tick(3, 1.35f));
         animationQueue.Enqueue(Success(2));
+        animationQueue.Enqueue(Gotcha());
+        animationQueue.Enqueue(CaughtUI(1.5f));
 
         StartCoroutine(PlayAnimationQueue());
     }
@@ -60,7 +66,7 @@ public class CatchManager : MonoBehaviour
     private IEnumerator Bounce(float duration)
     {
         //pokemon_GUI.GetComponent<Animator>().
-        Instantiate(Resources.Load("Caught Object"),pokemon.transform.position + Vector3.up, Quaternion.identity ,pokeball_GUI.transform);
+        Instantiate(Resources.Load("Caught Object"), pokemon.transform.position + Vector3.up, Quaternion.identity, pokeball_GUI.transform);
         yield return new WaitForSeconds(0.5f);
         pokeball.GetComponent<Rigidbody>().velocity = Vector3.zero;
         pokeball.GetComponent<Rigidbody>().inertiaTensorRotation = Quaternion.identity;
@@ -122,6 +128,34 @@ public class CatchManager : MonoBehaviour
         audioManager.Success();
         Debug.Log("Catch SUCCESSSSSSSSSS");
     }
+
+    private IEnumerator Gotcha()
+    {
+        // lerp the colour to transparent
+
+        gotchaText.SetActive(true);
+        gotchaText.GetComponent<TextMeshProUGUI>().color = Color.clear;
+
+        while (gotchaText.GetComponent<TextMeshProUGUI>().color.g < 0.9f)
+        {
+            gotchaText.GetComponent<TextMeshProUGUI>().color = Color.Lerp(gotchaText.GetComponent<TextMeshProUGUI>().color, Color.white, 0.02f);
+
+            yield return null;
+        }
+
+        gotchaText.GetComponent<TextMeshProUGUI>().color = Color.white;
+        // open UI to go next
+    }
+
+    private IEnumerator CaughtUI(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+
+        caughtUI.SetActive(true);
+        caughtUI.GetComponent<UI_CaughtUI>().SetCaughtUI(pokemon.GetComponent<PokemonLogic>().pokemon.currStats);
+        // set UI to true
+    }
+
     private IEnumerator Fail()
     {
 

@@ -70,7 +70,7 @@ public class CatchManager : MonoBehaviour
     {
         for (int i = 0; i < numberOfTicks; i++)
         {
-            // play tick animation here
+            // 
             Debug.Log("Tick " + i);
             yield return new WaitForSeconds(animationDuration);
         }
@@ -78,13 +78,12 @@ public class CatchManager : MonoBehaviour
 
     private IEnumerator Success(float animaitonDuration)
     {
-        // play animation
+        // ****************************************************     play success animation here animation here        ********************************************
         yield return new WaitForSeconds(animaitonDuration);
         Debug.Log("Catch SUCCESSSSSSSSSS");
     }
     private IEnumerator Fail()
     {
-        // play animation
 
         while (true)
         {

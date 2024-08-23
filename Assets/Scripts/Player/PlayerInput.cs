@@ -12,7 +12,7 @@ public class PlayerInput : MonoBehaviour
 
     private void Update()
     {
-        if (!TouchUI())
+        if (Input.touchCount == 0 && !TouchUI_PC())
         {
             if (Input.GetMouseButtonDown(0))
             {
@@ -22,6 +22,10 @@ public class PlayerInput : MonoBehaviour
             {
                 GetTargetPos_Cont(Input.mousePosition);
             }
+        }
+
+        if (!TouchUI())
+        {
 
             if (Input.touchCount > 0)
             {
@@ -49,6 +53,12 @@ public class PlayerInput : MonoBehaviour
         }
 
         return false;
+    }
+
+    private bool TouchUI_PC()
+    {
+        return EventSystem.current.IsPointerOverGameObject();
+
     }
     private void GetTargetPos_Cont(Vector2 pos)
     {

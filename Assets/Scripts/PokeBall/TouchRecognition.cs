@@ -42,7 +42,7 @@ public class TouchRecognition : MonoBehaviour
     void Update()
     {
 
-        if (Input.touchCount == 0 && CatchManager.Instance.canTouch)
+        if (Input.touchCount == 0 && CatchManager.Instance.canTouch && !TouchUI_PC())
         {
             if (Input.GetMouseButton(0))
             {
@@ -231,6 +231,11 @@ public class TouchRecognition : MonoBehaviour
         }
 
         return false;
+    }
+    private bool TouchUI_PC()
+    {
+        return EventSystem.current.IsPointerOverGameObject();
+
     }
 
     float PerpendicularDistance(Vector2 A, Vector2 B, Vector2 C)

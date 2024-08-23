@@ -15,7 +15,7 @@ public class UI_CaughtUI : MonoBehaviour
         _text.Add("You caught a : \n \n");
         _text.Add(pokemon.pokemonName);
         _text.Add("\n \n");
-        _text.Add(pokemon.CP.ToString());
+        _text.Add("CP " + pokemon.CP.ToString());
 
         caughtText.text = string.Join("", _text);
     }

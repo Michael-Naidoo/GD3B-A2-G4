@@ -41,10 +41,13 @@ public class TouchRecognition : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!TouchUI())
+        if (!TouchUI() && CatchManager.Instance.canTouch)
         {
             if (Input.touchCount > 0)
             {
+                curveBall = false;
+                PokeballData.curveBall = false;
+                rb.velocity = Vector3.zero;
                 Touch touch = Input.GetTouch(0);
                 Vector3 touchPosition = Camera.main.ScreenToWorldPoint(new Vector3(touch.position.x, touch.position.y, Camera.main.WorldToScreenPoint(transform.position).z));
                 touchPosition.z = 0; // Maintain the object's Z position
@@ -81,6 +84,7 @@ public class TouchRecognition : MonoBehaviour
                 if (beingHeld)
                 {
                     rb.AddForce(new Vector3(0, 0, forwardForce) + new Vector3(0, moveDirection.y * forceMultiplierY), ForceMode.Impulse);
+                    rb.AddTorque(Vector3.right * 5, ForceMode.Impulse);
                 }
 
                 float distance = PerpendicularDistance(pointA, pointB, startPosition);
@@ -105,6 +109,7 @@ public class TouchRecognition : MonoBehaviour
                 if (curveBall)
                 {
                     rb.AddForce(new Vector3(distance * curveMultiplier, 0, 0), ForceMode.Acceleration);
+                    rb.AddTorque(new Vector3(1, 0, (distance > 0)? 9000:-9000) * 5, ForceMode.Impulse);
                 }
 
                 // Adjust max angle based on distance

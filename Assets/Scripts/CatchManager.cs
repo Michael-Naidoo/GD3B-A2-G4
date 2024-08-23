@@ -8,11 +8,15 @@ using Random = UnityEngine.Random;
 public class CatchManager : MonoBehaviour
 {
     public static CatchManager Instance { get; private set; }
+
+    public bool canTouch;
+    [Space(10)]
     public Queue<IEnumerator> animationQueue = new Queue<IEnumerator>();
     [Tooltip("GUI of pokemon")] public GameObject pokemon_GUI;
     [Tooltip("GameObject of pokemon")] public GameObject pokemon;
+    [Tooltip("GitBoxes of pokemon")] public GameObject pokemon_HitBoxes;
     [Tooltip("GUI of pokeball")] public GameObject pokeball_GUI;
-    [Tooltip("GUI of pokeball")] public Animator pokeball_animator;
+    [Tooltip("Animator of pokeball")] public Animator pokeball_animator;
     [Tooltip("GameObject of pokeball")] public GameObject pokeball;
 
     public GameObject gotchaText;
@@ -35,6 +39,7 @@ public class CatchManager : MonoBehaviour
 
     public void CatchSuccess()
     {
+        canTouch = false;
         animationQueue.Enqueue(Bounce(0.5f));
         animationQueue.Enqueue(Capture());
         animationQueue.Enqueue(Tick(3, 1.35f));
@@ -47,6 +52,7 @@ public class CatchManager : MonoBehaviour
 
     public void CatchFail()
     {
+        canTouch = false;
         animationQueue.Enqueue(Bounce(0.5f));
         animationQueue.Enqueue(Capture());
         animationQueue.Enqueue(Tick(Random.Range(1, 2), 1.35f));
@@ -66,6 +72,7 @@ public class CatchManager : MonoBehaviour
     private IEnumerator Bounce(float duration)
     {
         //pokemon_GUI.GetComponent<Animator>().
+        pokemon_HitBoxes.SetActive(false);
         Instantiate(Resources.Load("Caught Object"), pokemon.transform.position + Vector3.up, Quaternion.identity, pokeball_GUI.transform);
         yield return new WaitForSeconds(0.5f);
         pokeball.GetComponent<Rigidbody>().velocity = Vector3.zero;
@@ -158,6 +165,7 @@ public class CatchManager : MonoBehaviour
 
     private IEnumerator Fail()
     {
+        pokemon_HitBoxes.SetActive(true);
 
         while (true)
         {
@@ -177,6 +185,8 @@ public class CatchManager : MonoBehaviour
             }
             yield return null;
         }
+
+        canTouch = true;
     }
 
 }

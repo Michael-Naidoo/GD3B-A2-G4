@@ -28,6 +28,7 @@ public class PokemonLogic : MonoBehaviour
         pokemonHitCircles.PrepareHitCircles();
         CatchManager.Instance.pokemon_GUI = transform.GetChild(0).gameObject;
         CatchManager.Instance.pokemon = gameObject;
+        CatchManager.Instance.pokemon_HitBoxes = transform.GetChild(1).gameObject;
 
         //dataPanel.GetComponent<PokemonStatUI>().DisplayData(pokemon);
         GUI.sprite = pokemon.base_pokedata.sprite;

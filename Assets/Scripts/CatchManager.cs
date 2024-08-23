@@ -9,8 +9,10 @@ public class CatchManager : MonoBehaviour
     [Tooltip("GUI of pokemon")] public GameObject pokemon_GUI;
     [Tooltip("GameObject of pokemon")] public GameObject pokemon;
     [Tooltip("GUI of pokeball")] public GameObject pokeball_GUI;
+    [Tooltip("GUI of pokeball")] public Animator pokeball_animator;
     [Tooltip("GameObject of pokeball")] public GameObject pokeball;
 
+    public GameObject gotchaPrefab;
 
     private void Awake()
     {
@@ -19,8 +21,9 @@ public class CatchManager : MonoBehaviour
 
     public void CatchSuccess()
     {
+        animationQueue.Enqueue(Bounce(0.5f));
         animationQueue.Enqueue(Capture());
-        animationQueue.Enqueue(Tick(3, 1));
+        animationQueue.Enqueue(Tick(3, 1.35f));
         animationQueue.Enqueue(Success(2));
 
         StartCoroutine(PlayAnimationQueue());
@@ -28,8 +31,9 @@ public class CatchManager : MonoBehaviour
 
     public void CatchFail()
     {
+        animationQueue.Enqueue(Bounce(0.5f));
         animationQueue.Enqueue(Capture());
-        animationQueue.Enqueue(Tick(Random.Range(1, 2), 1));
+        animationQueue.Enqueue(Tick(Random.Range(1, 2), 1.35f));
         animationQueue.Enqueue(Fail());
 
         StartCoroutine(PlayAnimationQueue());
@@ -43,12 +47,25 @@ public class CatchManager : MonoBehaviour
         }
     }
 
+    private IEnumerator Bounce(float duration)
+    {
+        //pokemon_GUI.GetComponent<Animator>().
+        Instantiate(Resources.Load("Caught Object"),pokemon.transform.position + Vector3.up, Quaternion.identity ,pokeball_GUI.transform);
+        yield return new WaitForSeconds(0.5f);
+        pokeball.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        pokeball.GetComponent<Rigidbody>().inertiaTensorRotation = Quaternion.identity;
+        pokeball.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+        pokeball.transform.localRotation = Quaternion.identity;
+        pokeball.transform.position = new Vector3(pokeball.transform.position.x, 1, pokeball.transform.position.z);
+        pokeball_GUI.GetComponent<Animator>().SetTrigger("Bounce");
+
+        yield return new WaitForSeconds(duration);
+
+
+    }
+
     private IEnumerator Capture()
     {
-        yield return new WaitForSeconds(0.5f);
-
-        pokemon_GUI.GetComponent<Animator>().Play("caught go up");
-        Instantiate(Resources.Load("Caught Object"), pokemon_GUI.transform);
 
         pokeball.GetComponent<Rigidbody>().velocity = Vector3.zero;
         pokeball.GetComponent<Rigidbody>().drag = 10;
@@ -74,7 +91,7 @@ public class CatchManager : MonoBehaviour
         for (int i = 0; i < numberOfTicks; i++)
         {
             // *********************************
-            pokemon_GUI.GetComponent<Animator>().Play("gotchua rotate");
+            pokeball_GUI.GetComponent<Animator>().SetTrigger("Tick");
             Debug.Log("Tick " + i);
             yield return new WaitForSeconds(animationDuration);
         }
@@ -82,8 +99,8 @@ public class CatchManager : MonoBehaviour
 
     private IEnumerator Success(float animaitonDuration)
     {
-        Instantiate(Resources.Load("gotchua Object"), pokemon_GUI.transform);
-        pokemon_GUI.GetComponent<Animator>().Play("default");
+        Instantiate(gotchaPrefab, pokeball_GUI.transform.position, Quaternion.identity, pokeball_GUI.transform);
+        pokeball_GUI.GetComponent<Animator>().Play("default");
         // ****************************************************     play success animation here animation here        ********************************************
         yield return new WaitForSeconds(animaitonDuration);
         Debug.Log("Catch SUCCESSSSSSSSSS");

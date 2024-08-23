@@ -2,13 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class TouchRecognition : MonoBehaviour
 {
     private float tempMaxAngle;
 
-    [SerializeField]private bool curveBall;
-    
+    [SerializeField] private bool curveBall;
+
     public PokeballData PokeballData;
 
     // Coordinates of points A, B, and C
@@ -19,7 +20,7 @@ public class TouchRecognition : MonoBehaviour
     public float curveMultiplier;
 
     private Vector3 startPosition;
-    
+
     private Rigidbody rb;
     private Vector3 moveDirection;
     public float forceMultiplierX;
@@ -40,89 +41,102 @@ public class TouchRecognition : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.touchCount > 0)
+        if (!TouchUI())
         {
-            Touch touch = Input.GetTouch(0);
-            Vector3 touchPosition = Camera.main.ScreenToWorldPoint(new Vector3(touch.position.x, touch.position.y, Camera.main.WorldToScreenPoint(transform.position).z));
-            touchPosition.z = 0; // Maintain the object's Z position
-            if (!touchStart)
+            if (Input.touchCount > 0)
             {
-                startPosition = transform.position;
-                touchStart = true;
+                Touch touch = Input.GetTouch(0);
+                Vector3 touchPosition = Camera.main.ScreenToWorldPoint(new Vector3(touch.position.x, touch.position.y, Camera.main.WorldToScreenPoint(transform.position).z));
+                touchPosition.z = 0; // Maintain the object's Z position
+                if (!touchStart)
+                {
+                    startPosition = transform.position;
+                    touchStart = true;
+                }
+                transform.position = touchPosition;
+                rb.velocity = Vector3.zero;
+                rb.rotation = Quaternion.identity;
+                rb.angularVelocity = Vector3.zero;
+                beingHeld = true;
+                if (holdTimer == 0)
+                {
+                    moveDirection = transform.position - startPosition;
+                    holdTimer = holdTimerMax;
+                }
+
+                if (nodeSpawnTimer == 0)
+                {
+                    pointA = pointB;
+                    pointB = transform.position;
+                    nodeSpawnTimer = nodeSpawnTimerMax;
+                }
+
+                holdTimer--;
+                nodeSpawnTimer--;
+                Debug.DrawRay(transform.position, new Vector3(0, 0, forwardForce) + new Vector3(moveDirection.x * forceMultiplierX, 0, 0) + new Vector3(0, moveDirection.y * forceMultiplierY), Color.red);
             }
-            transform.position = touchPosition;
-            rb.velocity = Vector3.zero;
-            rb.rotation = Quaternion.identity;
-            rb.angularVelocity = Vector3.zero;
-            beingHeld = true;
-            if (holdTimer == 0)
+            else if (Input.touchCount == 0)
             {
-                moveDirection = transform.position - startPosition;
+                touchStart = false;
+                if (beingHeld)
+                {
+                    rb.AddForce(new Vector3(0, 0, forwardForce) + new Vector3(0, moveDirection.y * forceMultiplierY), ForceMode.Impulse);
+                }
+
+                float distance = PerpendicularDistance(pointA, pointB, startPosition);
+
+                // Debug the distance and cross-product results
+                //Debug.Log($"Distance: {distance}");
+
+                // Apply the force along the X-axis using the distance
+                if (distance * 1000 > 170 || distance * 1000 < -170)
+                {
+                    Debug.LogError("curving");
+                    PokeballData.curveBall = true;
+                    curveBall = true;
+                }
+                else
+                {
+
+                    PokeballData.curveBall = false;
+                    curveBall = false;
+                }
+
+                if (curveBall)
+                {
+                    rb.AddForce(new Vector3(distance * curveMultiplier, 0, 0), ForceMode.Acceleration);
+                }
+
+                // Adjust max angle based on distance
+                if (distance < 0 && distance * 1000 < -tempMaxAngle)
+                {
+                    tempMaxAngle = -distance * 1000;
+                    Debug.LogError("tempMaxAngle = " + distance * 1000);
+                }
+                else if (distance * 1000 > tempMaxAngle)
+                {
+                    tempMaxAngle = distance * 1000;
+                    Debug.LogError("tempMaxAngle = " + tempMaxAngle);
+                }
+
+                beingHeld = false;
                 holdTimer = holdTimerMax;
             }
-
-            if (nodeSpawnTimer == 0)
-            {
-                pointA = pointB;
-                pointB = transform.position;
-                nodeSpawnTimer = nodeSpawnTimerMax;
-            }
-
-            holdTimer--;
-            nodeSpawnTimer--;
-            Debug.DrawRay(transform.position, new Vector3(0, 0, forwardForce) + new Vector3(moveDirection.x * forceMultiplierX, 0, 0) + new Vector3(0, moveDirection.y * forceMultiplierY), Color.red);
         }
-        else if (Input.touchCount == 0)
-        {
-            touchStart = false;
-            if (beingHeld)
-            {
-                rb.AddForce(new Vector3(0, 0, forwardForce) + new Vector3(0, moveDirection.y * forceMultiplierY), ForceMode.Impulse);
-            }
-
-            float distance = PerpendicularDistance(pointA, pointB, startPosition);
-
-            // Debug the distance and cross-product results
-            //Debug.Log($"Distance: {distance}");
-
-            // Apply the force along the X-axis using the distance
-            if (distance * 1000 > 170 || distance * 1000 < -170)
-            {
-                Debug.LogError("curving");
-                PokeballData.curveBall = true;
-                curveBall = true;
-            }
-            else
-            {
-                
-                PokeballData.curveBall = false;
-                curveBall = false;
-            }
-
-            if (curveBall)
-            {
-                rb.AddForce(new Vector3(distance * curveMultiplier, 0, 0), ForceMode.Acceleration);
-            }
-
-            // Adjust max angle based on distance
-            if (distance < 0 && distance * 1000 < -tempMaxAngle)
-            {
-                tempMaxAngle = -distance * 1000;
-                Debug.LogError("tempMaxAngle = " + distance * 1000);
-            }
-            else if (distance * 1000 > tempMaxAngle)
-            {
-                tempMaxAngle = distance * 1000;
-                Debug.LogError("tempMaxAngle = " + tempMaxAngle);
-            }
-
-            beingHeld = false;
-            holdTimer = holdTimerMax;
-        }
-
-        
     }
-    
+
+    private bool TouchUI()
+    {
+        if (Input.touchCount > 0)
+        {
+            int id = Input.GetTouch(0).fingerId;
+
+            return EventSystem.current.IsPointerOverGameObject(id);
+        }
+
+        return false;
+    }
+
     float PerpendicularDistance(Vector2 A, Vector2 B, Vector2 C)
     {
         // Coefficients of the line equation Ax + By + C = 0

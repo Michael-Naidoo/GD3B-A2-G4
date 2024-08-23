@@ -15,7 +15,7 @@ public class GUIScript : MonoBehaviour
 
     public PokeballState pokeballState;
     void Update()
-    {
+    { /*
         switch (pokeballState)
         {
             case PokeballState.idle:
@@ -24,13 +24,15 @@ public class GUIScript : MonoBehaviour
             case PokeballState.drawAttention:
                 return;
             case PokeballState.spinninClockwise:
+                transform.position = pokeball.transform.position;
                 return;
             case PokeballState.spinningAnticlockwise:
+                transform.position = pokeball.transform.position;
                 return;
             default:
                 pokeballState = PokeballState.idle;
                 return;
             
-        }
+        }*/
     }
 }

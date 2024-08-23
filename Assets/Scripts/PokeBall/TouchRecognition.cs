@@ -41,7 +41,98 @@ public class TouchRecognition : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!TouchUI() && CatchManager.Instance.canTouch)
+
+        if (Input.touchCount == 0 && CatchManager.Instance.canTouch)
+        {
+            if (Input.GetMouseButton(0))
+            {
+                curveBall = false;
+                PokeballData.curveBall = false;
+                rb.velocity = Vector3.zero;
+                Vector2 mousePos = Input.mousePosition;
+                Vector3 touchPosition = Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, Camera.main.WorldToScreenPoint(transform.position).z));
+                touchPosition.z = 0; // Maintain the object's Z position
+                if (!touchStart)
+                {
+                    startPosition = transform.position;
+                    touchStart = true;
+                }
+                transform.position = touchPosition;
+                rb.velocity = Vector3.zero;
+                rb.rotation = Quaternion.identity;
+                rb.angularVelocity = Vector3.zero;
+                beingHeld = true;
+                if (holdTimer == 0)
+                {
+                    moveDirection = transform.position - startPosition;
+                    holdTimer = holdTimerMax;
+                }
+
+                if (nodeSpawnTimer == 0)
+                {
+                    pointA = pointB;
+                    pointB = transform.position;
+                    nodeSpawnTimer = nodeSpawnTimerMax;
+                }
+
+                holdTimer--;
+                nodeSpawnTimer--;
+                Debug.DrawRay(transform.position, new Vector3(0, 0, forwardForce) + new Vector3(moveDirection.x * forceMultiplierX, 0, 0) + new Vector3(0, moveDirection.y * forceMultiplierY), Color.red);
+            }
+            else if (Input.GetMouseButtonUp(0))
+            {
+                touchStart = false;
+                if (beingHeld)
+                {
+                    rb.AddForce(new Vector3(0, 0, forwardForce) + new Vector3(0, moveDirection.y * forceMultiplierY), ForceMode.Impulse);
+                    rb.AddTorque(Vector3.right * 5, ForceMode.Impulse);
+                }
+
+                float distance = PerpendicularDistance(pointA, pointB, startPosition);
+
+                // Debug the distance and cross-product results
+                //Debug.Log($"Distance: {distance}");
+
+                // Apply the force along the X-axis using the distance
+                if (distance * 1000 > 170 || distance * 1000 < -170)
+                {
+                    Debug.LogError("curving");
+                    PokeballData.curveBall = true;
+                    curveBall = true;
+                }
+                else
+                {
+
+                    PokeballData.curveBall = false;
+                    curveBall = false;
+                }
+
+                if (curveBall)
+                {
+                    rb.AddForce(new Vector3(distance * curveMultiplier, 0, 0), ForceMode.Acceleration);
+                    rb.AddTorque(new Vector3(1, 0, (distance > 0) ? 9000 : -9000) * 5, ForceMode.Impulse);
+                }
+
+                // Adjust max angle based on distance
+                if (distance < 0 && distance * 1000 < -tempMaxAngle)
+                {
+                    tempMaxAngle = -distance * 1000;
+                    Debug.LogError("tempMaxAngle = " + distance * 1000);
+                }
+                else if (distance * 1000 > tempMaxAngle)
+                {
+                    tempMaxAngle = distance * 1000;
+                    Debug.LogError("tempMaxAngle = " + tempMaxAngle);
+                }
+
+                beingHeld = false;
+                holdTimer = holdTimerMax;
+            }
+
+        }
+
+
+        else if (!TouchUI() && CatchManager.Instance.canTouch)
         {
             if (Input.touchCount > 0)
             {

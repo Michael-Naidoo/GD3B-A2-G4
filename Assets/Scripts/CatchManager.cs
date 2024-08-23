@@ -1,6 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class CatchManager : MonoBehaviour
 {
@@ -12,11 +15,22 @@ public class CatchManager : MonoBehaviour
     [Tooltip("GUI of pokeball")] public Animator pokeball_animator;
     [Tooltip("GameObject of pokeball")] public GameObject pokeball;
 
+    public GameObject gotchaText;
+    public GameObject caughtUI;
+    public GameObject buttonsUI;
+
     public GameObject gotchaPrefab;
+
+    private AudioManagerCatchScene audioManager;
 
     private void Awake()
     {
         Instance = this;
+    }
+
+    private void Start()
+    {
+        audioManager = GameObject.FindWithTag("UI").GetComponent<AudioManagerCatchScene>();
     }
 
     public void CatchSuccess()
@@ -25,6 +39,8 @@ public class CatchManager : MonoBehaviour
         animationQueue.Enqueue(Capture());
         animationQueue.Enqueue(Tick(3, 1.35f));
         animationQueue.Enqueue(Success(2));
+        animationQueue.Enqueue(Gotcha());
+        animationQueue.Enqueue(CaughtUI(1.5f));
 
         StartCoroutine(PlayAnimationQueue());
     }
@@ -50,7 +66,7 @@ public class CatchManager : MonoBehaviour
     private IEnumerator Bounce(float duration)
     {
         //pokemon_GUI.GetComponent<Animator>().
-        Instantiate(Resources.Load("Caught Object"),pokemon.transform.position + Vector3.up, Quaternion.identity ,pokeball_GUI.transform);
+        Instantiate(Resources.Load("Caught Object"), pokemon.transform.position + Vector3.up, Quaternion.identity, pokeball_GUI.transform);
         yield return new WaitForSeconds(0.5f);
         pokeball.GetComponent<Rigidbody>().velocity = Vector3.zero;
         pokeball.GetComponent<Rigidbody>().inertiaTensorRotation = Quaternion.identity;
@@ -61,6 +77,8 @@ public class CatchManager : MonoBehaviour
 
         yield return new WaitForSeconds(duration);
 
+        //***********************************  GO UP
+        audioManager.GoUp();
 
     }
 
@@ -77,6 +95,8 @@ public class CatchManager : MonoBehaviour
 
             if (Vector3.Distance(pokemon_GUI.transform.position, pokeball_GUI.transform.position) <= 0.01)
             {
+                //*********************************** DRAWN IN
+                audioManager.Suck();
                 Debug.Log("Finished Capture");
                 break;
             }
@@ -90,7 +110,8 @@ public class CatchManager : MonoBehaviour
     {
         for (int i = 0; i < numberOfTicks; i++)
         {
-            // *********************************
+            // ********************************* TICK
+            audioManager.Tick();
             pokeball_GUI.GetComponent<Animator>().SetTrigger("Tick");
             Debug.Log("Tick " + i);
             yield return new WaitForSeconds(animationDuration);
@@ -103,8 +124,38 @@ public class CatchManager : MonoBehaviour
         pokeball_GUI.GetComponent<Animator>().Play("default");
         // ****************************************************     play success animation here animation here        ********************************************
         yield return new WaitForSeconds(animaitonDuration);
+        //*********************************** SUCCESS
+        audioManager.Success();
         Debug.Log("Catch SUCCESSSSSSSSSS");
     }
+
+    private IEnumerator Gotcha()
+    {
+        // lerp the colour to transparent
+
+        gotchaText.SetActive(true);
+        gotchaText.GetComponent<TextMeshProUGUI>().color = Color.clear;
+
+        while (gotchaText.GetComponent<TextMeshProUGUI>().color.g < 0.9f)
+        {
+            gotchaText.GetComponent<TextMeshProUGUI>().color = Color.Lerp(gotchaText.GetComponent<TextMeshProUGUI>().color, Color.white, 0.02f);
+
+            yield return null;
+        }
+
+        gotchaText.GetComponent<TextMeshProUGUI>().color = Color.white;
+        // open UI to go next
+    }
+
+    private IEnumerator CaughtUI(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+
+        caughtUI.SetActive(true);
+        caughtUI.GetComponent<UI_CaughtUI>().SetCaughtUI(pokemon.GetComponent<PokemonLogic>().pokemon.currStats);
+        // set UI to true
+    }
+
     private IEnumerator Fail()
     {
 
@@ -117,6 +168,8 @@ public class CatchManager : MonoBehaviour
 
             if (Vector3.Distance(pokemon_GUI.transform.position, pokemon.GetComponent<PokemonLogic>().GUI_pos) <= 0.01)
             {
+                //*********************************** FAIL
+                audioManager.Fail();
                 Debug.Log("Finished Escape");
                 pokemon_GUI.transform.position = pokemon.GetComponent<PokemonLogic>().GUI_pos;
                 pokemon_GUI.transform.localScale = Vector3.one;

@@ -41,7 +41,7 @@ public class TouchRecognition : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        Debug.Log(Input.touchCount);
         if (Input.touchCount == 0 && CatchManager.Instance.canTouch && !TouchUI_PC())
         {
             if (Input.GetMouseButton(0))
@@ -132,7 +132,7 @@ public class TouchRecognition : MonoBehaviour
         }
 
 
-        else if (!TouchUI() && CatchManager.Instance.canTouch)
+         if (!TouchUI() && CatchManager.Instance.canTouch)
         {
             if (Input.touchCount > 0)
             {
@@ -171,9 +171,10 @@ public class TouchRecognition : MonoBehaviour
             }
             else if (Input.touchCount == 0)
             {
-                touchStart = false;
+                Debug.Log(beingHeld);
                 if (beingHeld)
                 {
+                    Debug.Log("Forces are being applied");
                     rb.AddForce(new Vector3(0, 0, forwardForce) + new Vector3(0, moveDirection.y * forceMultiplierY), ForceMode.Impulse);
                     rb.AddTorque(Vector3.right * 5, ForceMode.Impulse);
                 }
@@ -217,6 +218,7 @@ public class TouchRecognition : MonoBehaviour
 
                 beingHeld = false;
                 holdTimer = holdTimerMax;
+                touchStart = false;
             }
         }
     }
